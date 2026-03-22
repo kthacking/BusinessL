@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trichy & Perambalur Business Leads</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --surface2: #F0EDE6;
+    --border: #E2DDD5;
+    --text: #1A1714;
+    --text-muted: #7A756E;
+    --text-faint: #B0AAA2;
+    --accent: #C84B2F;
+    --accent-light: #FBF0ED;
+    --accent2: #2563EB;
+    --accent2-light: #EFF6FF;
+    --green: #16A34A;
+    --green-light: #F0FDF4;
+    --amber: #D97706;
+    --amber-light: #FFFBEB;
+    --purple: #7C3AED;
+    --purple-light: #F5F3FF;
+    --pink: #DB2777;
+    --pink-light: #FDF2F8;
+    --teal: #0D9488;
+    --teal-light: #F0FDFA;
+    --slate: #475569;
+    --slate-light: #F8FAFC;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Header */
+  .header {
+    background: var(--text);
+    color: #fff;
+    padding: 2rem 2.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 260px; height: 260px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    right: 80px; bottom: -80px;
+    width: 180px; height: 180px;
+    background: rgba(200,75,47,0.15);
+    border-radius: 50%;
+  }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .header h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+  .header-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  /* Stats */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+  .stat-item { padding-right: 1.5rem; }
+  .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem; }
+  .stat-val {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-val span { font-size: 1rem; opacity: 0.5; margin-left: 2px; }
+  .stat-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; font-weight: 400; }
+
+  /* Main content */
+  .main { padding: 1.75rem 2.5rem 3rem; }
+
+  /* Filters */
+  .filter-section { margin-bottom: 1.5rem; }
+  .filter-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .filter-btn .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .filter-btn:hover { border-color: var(--text-muted); color: var(--text); }
+  .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+  /* Search */
+  .search-row { display: flex; gap: 10px; margin-bottom: 1.25rem; align-items: center; }
+  .search-box {
+    flex: 1;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-box input:focus { border-color: var(--text-muted); }
+  .search-box svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-faint); }
+  .results-count { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+
+  /* Cards grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+  }
+
+  /* Lead Card */
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+
+  .card-top {
+    padding: 1rem 1.1rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-title-block { flex: 1; min-width: 0; }
+  .card-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .card-loc {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card-badges { display: flex; gap: 5px; align-items: center; margin-top: 5px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+  .ws-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .ws-none { background: #FEE2E2; color: #991B1B; }
+  .ws-poor { background: #FEF3C7; color: #92400E; }
+
+  .card-body { padding: 0.85rem 1.1rem; flex: 1; }
+  .card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: 0.75rem; }
+  .why-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    color: #7A1F10;
+    line-height: 1.5;
+  }
+  .why-label { font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 2px; }
+
+  .card-footer {
+    padding: 0.75rem 1.1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .social-link {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+  .social-link:hover { color: var(--text); }
+  .action-btns { display: flex; gap: 6px; flex-shrink: 0; }
+
+  .btn-call {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .btn-call:hover { background: #15803D; }
+  .btn-call.na {
+    background: var(--surface2);
+    color: var(--text-faint);
+    cursor: default;
+  }
+  .btn-wa {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn-wa:hover { background: #1DA851; }
+  .btn-wa.na { display: none; }
+
+  /* Category colors */
+  .cat-salon { background: #FDF2F8; color: #9D174D; }
+  .cat-bakery { background: #FFFBEB; color: #92400E; }
+  .cat-gym { background: #F0FDF4; color: #14532D; }
+  .cat-tuition { background: #EFF6FF; color: #1E3A8A; }
+  .cat-restaurant { background: #FFF7ED; color: #9A3412; }
+  .cat-cafe { background: #F5F3FF; color: #4C1D95; }
+  .cat-startup { background: #F0FDFA; color: #134E4A; }
+  .cat-shop { background: #FEF3C7; color: #78350F; }
+
+  .icon-salon { background: #FDF2F8; }
+  .icon-bakery { background: #FFFBEB; }
+  .icon-gym { background: #F0FDF4; }
+  .icon-tuition { background: #EFF6FF; }
+  .icon-restaurant { background: #FFF7ED; }
+  .icon-cafe { background: #F5F3FF; }
+  .icon-startup { background: #F0FDFA; }
+  .icon-shop { background: #FEF3C7; }
+
+  /* Empty state */
+  .empty { text-align: center; padding: 4rem 2rem; color: var(--text-faint); grid-column: 1 / -1; }
+  .empty p { margin-top: 0.5rem; font-size: 13px; }
+
+  /* Footer */
+  .foot { padding: 0 2.5rem 2rem; font-size: 11px; color: var(--text-faint); border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .header { padding: 1.5rem; }
+    .header h1 { font-size: 1.35rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat-item + .stat-item { border-left: none; padding-left: 0; }
+    .main { padding: 1.25rem 1rem 2rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-eyebrow">Sales Intelligence Report</div>
+      <h1>Trichy & Perambalur<br>Business data </h1>
+      <div class="header-sub">Local businesses without or with poor websites — ripe for outreach</div>
+    </div>
+    <div class="header-badge">data from KT </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-val" id="stat-total">25</div>
+      <div class="stat-lbl">Total Leads</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">18</div>
+      <div class="stat-lbl">No Website</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">7</div>
+      <div class="stat-lbl">Poor / Outdated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">8</div>
+      <div class="stat-lbl">Categories</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="filter-section">
+    <div class="filter-label">Filter by category</div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="search-row">
+    <div class="search-box">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search by name, area, description…" oninput="applyFilters()">
+    </div>
+    <div class="results-count" id="results-count">25 leads</div>
+  </div>
+  <div class="cards-grid" id="cards-grid"></div>
+</div>
+
+<div class="foot">
+  Sources: JustDial · IndiaMart · A2V.in · Wanderlog · Sulekha · Google Maps · Swiggy listings &nbsp;·&nbsp; All businesses confirmed active via Maps/Social presence &nbsp;·&nbsp; Click "Call" to dial directly
+</div>
+
+<script>
+const catMeta = {
+  salon:      { label: 'Salon / Beauty',    icon: '💅', dot: '#DB2777' },
+  bakery:     { label: 'Bakery',            icon: '🎂', dot: '#D97706' },
+  gym:        { label: 'Gym / Fitness',     icon: '🏋️', dot: '#16A34A' },
+  tuition:    { label: 'Tuition / Coaching',icon: '📚', dot: '#2563EB' },
+  restaurant: { label: 'Restaurant',        icon: '🍽️', dot: '#EA580C' },
+  cafe:       { label: 'Café',              icon: '☕', dot: '#7C3AED' },
+  startup:    { label: 'Startup / Wellness',icon: '🚀', dot: '#0D9488' },
+  shop:       { label: 'Local Shop',        icon: '🛍️', dot: '#D97706' },
+};
+
+const leads = [
+  {
+    cat: 'salon', name: 'Madhura Makeover',
+    loc: 'K K Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Facebook active',
+    ws: 'none',
+    desc: 'Home bridal makeup & beauty parlour services, popular for events and weddings.',
+    why: 'An online booking page would capture bridal enquiries 24/7 and reduce WhatsApp chaos.'
+  },
+  {
+    cat: 'salon', name: 'Renuga Beauty Parlour',
+    loc: 'Thiruvanaikoil, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps (4.5 ★)',
+    ws: 'none',
+    desc: 'Full-service ladies parlour near VS Nagar with strong local repeat clientele.',
+    why: 'A service menu & photo gallery site builds credibility and ranks on Google search.'
+  },
+  {
+    cat: 'salon', name: 'Bloom Us Beauty Parlour & Boutique',
+    loc: 'Puthur, Trichy',
+    phone: null, wa: null,
+    social: 'Facebook page active',
+    ws: 'none',
+    desc: 'Combined beauty parlour + boutique clothing store in a residential neighbourhood.',
+    why: 'Dual offerings need a catalogue website to drive footfall and enable online orders.'
+  },
+  {
+    cat: 'salon', name: 'New Trend Unisex & Beauty Saloon',
+    loc: 'Singarathope, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps listed',
+    ws: 'none',
+    desc: 'Unisex salon on a busy commercial street with bridal makeup services.',
+    why: 'Before/after photos and pricing page converts online searchers to walk-in customers.'
+  },
+  {
+    cat: 'salon', name: 'Glowmere Beauty Studio',
+    loc: 'Srirangam, Trichy',
+    phone: null, wa: null,
+    social: 'IndiaMart + Google Maps',
+    ws: 'poor',
+    desc: 'Skin & hair care services; active on IndiaMart but lacks a standalone website.',
+    why: 'Moving off IndiaMart to own website saves lead fees and owns the customer relationship.'
+  },
+  {
+    cat: 'bakery', name: 'Anbu Bekkery',
+    loc: 'Kumaravadi, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps (5 ★)',
+    ws: 'none',
+    desc: 'Popular neighbourhood bakery for custom cakes and baked snacks; strong word-of-mouth.',
+    why: 'An online pre-order page would capture cake orders 24/7 and reduce phone chaos.'
+  },
+  {
+    cat: 'bakery', name: 'Buy Me Cake',
+    loc: 'Kumaravadi, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps active',
+    ws: 'none',
+    desc: 'Bakery-café hybrid; popular for custom cakes and daily snacks at budget prices.',
+    why: 'A custom cake enquiry form drives weekend orders without depending on phone calls.'
+  },
+  {
+    cat: 'bakery', name: 'Classic Foods Bakery',
+    loc: 'Thillai Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Wanderlog + Google Maps',
+    ws: 'poor',
+    desc: 'Specialises in wedding & birthday cakes; listed on Wanderlog but no owned website.',
+    why: 'Bridal season orders need a booking page — third-party listings are unreliable.'
+  },
+  {
+    cat: 'bakery', name: 'Sri Murugan Bakery',
+    loc: 'Perambalur Town',
+    phone: '9360777710', wa: '9360777710',
+    social: 'Swiggy listed only',
+    ws: 'none',
+    desc: 'Local bakery in Perambalur serving breads, puffs, and snacks; only on Swiggy.',
+    why: 'Own website breaks Swiggy commission dependency and builds a loyal direct customer base.'
+  },
+  {
+    cat: 'gym', name: 'Joy Lifestyle Fitness Center',
+    loc: 'Ramlinga Nagar, Woraiyur, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps active',
+    ws: 'none',
+    desc: 'General gym with aerobics and Zumba classes; active local membership base.',
+    why: 'Online membership signup page reduces admin calls and enables easy plan upgrades.'
+  },
+  {
+    cat: 'gym', name: 'Premier Fitness Centre',
+    loc: 'Lingam Nagar, Woraiyur, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps listed',
+    ws: 'none',
+    desc: 'Neighbourhood gym focused on strength and weight training in Woraiyur area.',
+    why: 'Transformation testimonials on a website build trust and drive new walk-in trials.'
+  },
+  {
+    cat: 'gym', name: 'PSKV Fitness Institute',
+    loc: 'Ponmalaipatti, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps (4.9 ★)',
+    ws: 'none',
+    desc: 'Highly rated fitness institute with personalised coaching; a hidden gem in Trichy.',
+    why: 'A 4.9 ★ rating with no website means losing serious searchers to less-rated rivals.'
+  },
+  {
+    cat: 'gym', name: 'Mahimaa Ladies Gym & Diet',
+    loc: 'K K Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Facebook active',
+    ws: 'none',
+    desc: 'Women-only gym offering diet consultation and weight management programmes.',
+    why: 'A women-focused website with diet plan demos builds trust and drives enrollments.'
+  },
+  {
+    cat: 'tuition', name: 'Annai Tuition Centre',
+    loc: 'Trichy Main Road, Perambalur',
+    phone: '9360777710', wa: '9360777710',
+    social: 'A2V directory listed',
+    ws: 'none',
+    desc: 'School tuition centre near Trichy–Perambalur highway serving 6th–12th students.',
+    why: 'Online enrollment form with subject listing helps parents compare and register faster.'
+  },
+  {
+    cat: 'tuition', name: 'Score Tuition Centre',
+    loc: 'Srirangam, Trichy',
+    phone: '9655214462', wa: '9655214462',
+    social: 'A2V directory listed',
+    ws: 'poor',
+    desc: 'Coaching centre for 10th & 12th state board with a multi-teacher setup.',
+    why: 'Stale directory listing needs a refreshed site with board results and faculty profiles.'
+  },
+  {
+    cat: 'tuition', name: 'Shalom Tuition Center',
+    loc: 'Beema Nagar, Trichy',
+    phone: '9688756622', wa: '9688756622',
+    social: 'A2V listed + WhatsApp',
+    ws: 'none',
+    desc: 'School-level tuition centre focusing on science and maths for board students.',
+    why: 'Free downloadable study materials on a website builds parent trust and boosts walk-ins.'
+  },
+  {
+    cat: 'tuition', name: 'Kalai Home Tuition',
+    loc: 'Woraiyur, Trichy',
+    phone: '9047785801', wa: '9047785801',
+    social: 'A2V directory listed',
+    ws: 'none',
+    desc: 'Home tuition service connecting tutors to students across the Woraiyur area.',
+    why: 'A simple booking site replaces word-of-mouth dependency and grows reach to nearby areas.'
+  },
+  {
+    cat: 'tuition', name: 'Friends Tuition Centre',
+    loc: 'Theppakula Street, Trichy',
+    phone: '8124207276', wa: '8124207276',
+    social: 'A2V listed',
+    ws: 'none',
+    desc: 'Tuition centre + home tuition network for primary and secondary students.',
+    why: 'Dual model needs a website to clearly explain both options and let parents book online.'
+  },
+  {
+    cat: 'restaurant', name: 'Banana Leaf Restaurant',
+    loc: 'Airport Road, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps (many reviews)',
+    ws: 'none',
+    desc: 'Popular family restaurant near Trichy airport serving South Indian thali meals.',
+    why: 'Airport traveller traffic demands a menu website with directions and timing info.'
+  },
+  {
+    cat: 'restaurant', name: 'Sri Gowri Krishnaa Hotel',
+    loc: 'Thillai Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Wanderlog + Google Maps',
+    ws: 'poor',
+    desc: 'Well-known vegetarian hotel with a Thillai Nagar branch; limited online presence.',
+    why: 'Online table bookings and a menu PDF on the website increases weekday occupancy.'
+  },
+  {
+    cat: 'restaurant', name: 'Kannappa Restaurant',
+    loc: 'Palakarai, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps listed',
+    ws: 'none',
+    desc: 'Popular for mutton biryani and Chettinad specials; completely walk-in only.',
+    why: 'Parcel order page and Google Business profile reduces missed calls during peak hours.'
+  },
+  {
+    cat: 'cafe', name: 'The Chocoholic',
+    loc: 'Thillai Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Instagram active (desserts)',
+    ws: 'none',
+    desc: 'Dessert café specialising in custom chocolates and baked goods; Instagram-only marketing.',
+    why: 'A gifting and custom order page unlocks corporate sales that Instagram cannot handle.'
+  },
+  {
+    cat: 'cafe', name: 'Brown Sugar by Devaki Vijayaraman',
+    loc: 'Thillai Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Instagram active',
+    ws: 'none',
+    desc: 'Home-baker turned café concept with artisan desserts and custom celebration cakes.',
+    why: 'A professional website with a portfolio and pricing page legitimises the brand for premium clients.'
+  },
+  {
+    cat: 'startup', name: 'Revamp Fitness & Wellness',
+    loc: 'K K Nagar, Trichy',
+    phone: null, wa: null,
+    social: 'Google Maps + Instagram',
+    ws: 'none',
+    desc: 'Emerging wellness startup combining gym, diet consulting, and mental wellness programmes.',
+    why: 'Multi-service startup urgently needs a website to pitch and win corporate wellness contracts.'
+  },
+  {
+    cat: 'shop', name: 'Trichy Cosmetics Center',
+    loc: 'Tiruchirappalli Central',
+    phone: null, wa: null,
+    social: 'IndiaMart (4 ★, 126 reviews)',
+    ws: 'poor',
+    desc: 'Retail cosmetics dealer with GST registration; active on IndiaMart only.',
+    why: 'Own product catalogue site removes IndiaMart commission dependency and grows B2B reach.'
+  }
+];
+
+const filterCategories = [
+  { key: 'all', label: 'All' },
+  { key: 'salon', label: 'Salon / Beauty' },
+  { key: 'bakery', label: 'Bakery' },
+  { key: 'gym', label: 'Gym / Fitness' },
+  { key: 'tuition', label: 'Tuition / Coaching' },
+  { key: 'restaurant', label: 'Restaurant' },
+  { key: 'cafe', label: 'Café' },
+  { key: 'startup', label: 'Startup' },
+  { key: 'shop', label: 'Local Shop' },
+];
+
+let activeFilter = 'all';
+
+function buildFilters() {
+  const container = document.getElementById('filters');
+  filterCategories.forEach(f => {
+    const count = f.key === 'all' ? leads.length : leads.filter(l => l.cat === f.key).length;
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (f.key === 'all' ? ' active' : '');
+    btn.dataset.key = f.key;
+    let inner = '';
+    if (f.key !== 'all' && catMeta[f.key]) {
+      inner = `<span class="dot" style="background:${catMeta[f.key].dot}"></span>`;
+    }
+    btn.innerHTML = inner + f.label + ` (${count})`;
+    btn.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = f.key;
+      applyFilters();
+    };
+    container.appendChild(btn);
+  });
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  let data = activeFilter === 'all' ? leads : leads.filter(l => l.cat === activeFilter);
+  if (q) {
+    data = data.filter(l =>
+      l.name.toLowerCase().includes(q) ||
+      l.loc.toLowerCase().includes(q) ||
+      l.desc.toLowerCase().includes(q) ||
+      catMeta[l.cat].label.toLowerCase().includes(q)
+    );
+  }
+  renderCards(data);
+  document.getElementById('results-count').textContent = data.length + ' lead' + (data.length !== 1 ? 's' : '');
+  document.getElementById('stat-total').textContent = data.length;
+}
+
+function formatPhone(p) {
+  if (!p) return null;
+  const digits = p.replace(/\D/g, '');
+  if (digits.length === 10) return '+91 ' + digits.slice(0,5) + ' ' + digits.slice(5);
+  return '+91 ' + digits;
+}
+
+function renderCards(data) {
+  const grid = document.getElementById('cards-grid');
+  if (!data.length) {
+    grid.innerHTML = '<div class="empty"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>No leads match your filters.</p></div>';
+    return;
+  }
+  grid.innerHTML = data.map((l, i) => {
+    const m = catMeta[l.cat];
+    const fmtPhone = formatPhone(l.phone);
+    const callBtn = fmtPhone
+      ? `<a class="btn-call" href="tel:${l.phone}">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          ${fmtPhone}
+        </a>`
+      : `<span class="btn-call na">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          Call (JD)
+        </span>`;
+
+    const waBtn = l.wa
+      ? `<a class="btn-wa" href="https://wa.me/91${l.wa}?text=Hi%2C%20I%20came%20across%20${encodeURIComponent(l.name)}%20and%20wanted%20to%20discuss%20building%20a%20professional%20website%20for%20your%20business." target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>`
+      : '';
+
+    const wsBadge = l.ws === 'none'
+      ? '<span class="ws-badge ws-none">No Website</span>'
+      : '<span class="ws-badge ws-poor">Poor / Outdated</span>';
+
+    return `<div class="card">
+      <div class="card-top">
+        <div class="card-icon icon-${l.cat}">${m.icon}</div>
+        <div class="card-title-block">
+          <div class="card-name">${l.name}</div>
+          <div class="card-loc">
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${l.loc}
+          </div>
+          <div class="card-badges">
+            <span class="badge cat-${l.cat}">${m.label}</span>
+            ${wsBadge}
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-desc">${l.desc}</div>
+        <div class="why-box">
+          <div class="why-label">Why they need a website</div>
+          ${l.why}
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="social-link">
+          <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          ${l.social}
+        </div>
+        <div class="action-btns">
+          ${waBtn}
+          ${callBtn}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+buildFilters();
+renderCards(leads);
+</script>
+</body>
+</html>

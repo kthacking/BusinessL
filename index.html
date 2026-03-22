@@ -3,778 +3,863 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trichy & Perambalur Business Leads</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<title>CodeRise — Sales Intelligence Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F5F3EE;
-    --surface: #FFFFFF;
-    --surface2: #F0EDE6;
-    --border: #E2DDD5;
-    --text: #1A1714;
-    --text-muted: #7A756E;
-    --text-faint: #B0AAA2;
-    --accent: #C84B2F;
-    --accent-light: #FBF0ED;
-    --accent2: #2563EB;
-    --accent2-light: #EFF6FF;
-    --green: #16A34A;
-    --green-light: #F0FDF4;
-    --amber: #D97706;
-    --amber-light: #FFFBEB;
-    --purple: #7C3AED;
-    --purple-light: #F5F3FF;
-    --pink: #DB2777;
-    --pink-light: #FDF2F8;
-    --teal: #0D9488;
-    --teal-light: #F0FDFA;
-    --slate: #475569;
-    --slate-light: #F8FAFC;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  }
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{
+  font-family:'Geist','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#F5F5F7;
+  color:#1D1D1F;
+  min-height:100vh;
+  font-size:14px;
+  line-height:1.5;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─── VARIABLES ─────────────────────────────────────────────── */
+:root{
+  --white:#FFFFFF;
+  --bg:#F5F5F7;
+  --bg2:#FBFBFD;
+  --surface:#FFFFFF;
+  --surface2:#F5F5F7;
+  --surface3:#EBEBED;
+  --border:rgba(0,0,0,0.08);
+  --border2:rgba(0,0,0,0.14);
+  --text:#1D1D1F;
+  --text2:#3D3D3F;
+  --muted:#6E6E73;
+  --faint:#AEAEB2;
+  --accent:#3B5BFF;
+  --accent-light:#F0F2FF;
+  --accent-mid:rgba(59,91,255,0.12);
+  --red:#FF3B30;
+  --red-light:#FFF2F1;
+  --orange:#FF9500;
+  --orange-light:#FFF8EE;
+  --green:#34C759;
+  --green-light:#F1FBF4;
+  --yellow:#FFCC00;
+  --yellow-light:#FFFDE8;
+  --pink:#FF2D55;
+  --pink-light:#FFF1F4;
+  --purple:#AF52DE;
+  --purple-light:#F8F0FF;
+  --teal:#5AC8FA;
+  --teal-light:#F0FAFF;
+  --r4:4px;
+  --r8:8px;
+  --r12:12px;
+  --r16:16px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow:0 2px 8px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.05);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.1),0 4px 12px rgba(0,0,0,.06);
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
+/* ─── NAVBAR ─────────────────────────────────────────────────── */
+.navbar{
+  height:52px;
+  background:rgba(255,255,255,0.82);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+}
+.nav-logo{display:flex;align-items:center;gap:0;}
+.nav-logo svg{height:28px;width:auto;}
 
-  /* Header */
-  .header {
-    background: var(--text);
-    color: #fff;
-    padding: 2rem 2.5rem 1.75rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    right: -60px; top: -60px;
-    width: 260px; height: 260px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 50%;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    right: 80px; bottom: -80px;
-    width: 180px; height: 180px;
-    background: rgba(200,75,47,0.15);
-    border-radius: 50%;
-  }
-  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-  .header-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-  .header h1 {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .header-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-  }
-  .header-badge {
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 20px;
-    white-space: nowrap;
-    margin-top: 4px;
-  }
+.nav-center{display:flex;align-items:center;gap:2px;}
+.nav-pill{
+  font-size:13px;font-weight:500;color:var(--muted);
+  padding:5px 12px;border-radius:20px;border:none;
+  background:transparent;cursor:pointer;transition:all .15s;
+}
+.nav-pill:hover{color:var(--text);background:var(--surface3);}
+.nav-pill.active{color:var(--accent);background:var(--accent-light);}
 
-  /* Stats */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-  }
-  .stat-item { padding-right: 1.5rem; }
-  .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem; }
-  .stat-val {
-    font-family: 'Sora', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-  .stat-val span { font-size: 1rem; opacity: 0.5; margin-left: 2px; }
-  .stat-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; font-weight: 400; }
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-badge{
+  font-size:11px;font-weight:600;
+  background:var(--accent);color:#fff;
+  padding:3px 10px;border-radius:20px;
+  letter-spacing:-.01em;
+}
+.nav-search{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;padding:5px 10px;
+  font-size:12px;color:var(--muted);
+  cursor:text;transition:all .15s;
+}
+.nav-search:focus-within{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-mid);}
+.nav-search input{
+  border:none;background:transparent;outline:none;
+  font-family:inherit;font-size:12px;color:var(--text);
+  width:160px;
+}
+.nav-search input::placeholder{color:var(--faint);}
 
-  /* Main content */
-  .main { padding: 1.75rem 2.5rem 3rem; }
+/* ─── HERO SECTION ──────────────────────────────────────────── */
+.hero{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:40px 24px 32px;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:-80px;right:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,91,255,.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;bottom:-60px;left:20%;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(52,199,89,.05) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{max-width:960px;margin:0 auto;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent-light);
+  border:1px solid rgba(59,91,255,.2);
+  border-radius:20px;padding:3px 10px;
+  font-size:11px;font-weight:600;color:var(--accent);
+  letter-spacing:.02em;margin-bottom:14px;
+}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero h1{
+  font-size:clamp(1.7rem,3.5vw,2.6rem);
+  font-weight:700;letter-spacing:-.03em;
+  color:var(--text);line-height:1.15;margin-bottom:8px;
+}
+.hero h1 span{color:var(--accent);}
+.hero-sub{
+  font-size:15px;color:var(--muted);font-weight:400;
+  max-width:480px;line-height:1.6;margin-bottom:28px;
+}
 
-  /* Filters */
-  .filter-section { margin-bottom: 1.5rem; }
-  .filter-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
-  .filters { display: flex; gap: 6px; flex-wrap: wrap; }
-  .filter-btn {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .filter-btn .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .filter-btn:hover { border-color: var(--text-muted); color: var(--text); }
-  .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+/* ─── STAT CARDS ────────────────────────────────────────────── */
+.stat-row{display:flex;gap:10px;flex-wrap:wrap;}
+.stat-card{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:var(--r12);
+  padding:14px 18px;
+  min-width:120px;flex:1;
+  transition:box-shadow .2s;
+}
+.stat-card:hover{box-shadow:var(--shadow);}
+.stat-n{
+  font-size:1.75rem;font-weight:700;letter-spacing:-.04em;
+  color:var(--text);line-height:1;
+}
+.stat-n.blue{color:var(--accent);}
+.stat-n.red{color:var(--red);}
+.stat-n.orange{color:var(--orange);}
+.stat-n.green{color:var(--green);}
+.stat-l{font-size:11px;color:var(--faint);margin-top:4px;font-weight:500;}
 
-  /* Search */
-  .search-row { display: flex; gap: 10px; margin-bottom: 1.25rem; align-items: center; }
-  .search-box {
-    flex: 1;
-    position: relative;
-  }
-  .search-box input {
-    width: 100%;
-    padding: 9px 12px 9px 36px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    background: var(--surface);
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .search-box input:focus { border-color: var(--text-muted); }
-  .search-box svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-faint); }
-  .results-count { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+/* ─── TOOLBAR ───────────────────────────────────────────────── */
+.toolbar{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:10px 24px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  position:sticky;top:52px;z-index:100;
+}
+.filter-scroll{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+.fpill{
+  font-size:12px;font-weight:500;
+  padding:5px 12px;border-radius:20px;
+  border:1px solid var(--border2);
+  background:var(--white);color:var(--muted);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+  display:flex;align-items:center;gap:5px;
+  font-family:inherit;
+}
+.fpill .pip{width:5px;height:5px;border-radius:50%;}
+.fpill:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.fpill.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.fpill.on .pip{background:rgba(255,255,255,.6)!important;}
+.res-lbl{font-size:12px;color:var(--faint);white-space:nowrap;font-weight:500;}
 
-  /* Cards grid */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 14px;
-  }
+/* ─── MAIN CONTENT ──────────────────────────────────────────── */
+.main{padding:20px 24px 60px;max-width:1100px;margin:0 auto;}
 
-  /* Lead Card */
-  .card {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+/* section header */
+.sec-head{
+  display:flex;align-items:center;gap:10px;
+  margin:24px 0 10px;
+}
+.sec-icon{
+  width:26px;height:26px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;
+}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+.sec-line{flex:1;height:1px;background:var(--border);}
+.sec-count{font-size:11px;color:var(--faint);font-weight:500;}
 
-  .card-top {
-    padding: 1rem 1.1rem 0.75rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  .card-icon {
-    width: 40px; height: 40px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .card-title-block { flex: 1; min-width: 0; }
-  .card-name {
-    font-family: 'Sora', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.3;
-    margin-bottom: 3px;
-  }
-  .card-loc {
-    font-size: 11px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .card-badges { display: flex; gap: 5px; align-items: center; margin-top: 5px; flex-wrap: wrap; }
-  .badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.02em;
-  }
-  .ws-badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-  }
-  .ws-none { background: #FEE2E2; color: #991B1B; }
-  .ws-poor { background: #FEF3C7; color: #92400E; }
+/* ─── LEAD CARD ─────────────────────────────────────────────── */
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r16);
+  margin-bottom:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s,border-color .2s,transform .15s;
+}
+.card:hover{box-shadow:var(--shadow);border-color:var(--border2);}
+.card.open{box-shadow:var(--shadow-md);border-color:rgba(59,91,255,.25);}
+.card.open .card-header{border-bottom:1px solid var(--border);}
 
-  .card-body { padding: 0.85rem 1.1rem; flex: 1; }
-  .card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: 0.75rem; }
-  .why-box {
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 6px 6px 0;
-    padding: 7px 10px;
-    font-size: 11.5px;
-    color: #7A1F10;
-    line-height: 1.5;
-  }
-  .why-label { font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 2px; }
+/* card header */
+.card-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;cursor:pointer;user-select:none;gap:12px;
+  transition:background .1s;
+}
+.card-header:hover{background:rgba(0,0,0,.01);}
+.card-hl{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.card-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;flex-shrink:0;
+}
+.card-meta{flex:1;min-width:0;}
+.card-name{
+  font-size:14px;font-weight:600;color:var(--text);
+  letter-spacing:-.01em;line-height:1.3;
+}
+.card-loc{
+  font-size:11px;color:var(--faint);margin-top:2px;
+  display:flex;align-items:center;gap:3px;
+}
+.card-tags{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap;}
+.tag{
+  font-size:10px;font-weight:600;
+  padding:2px 8px;border-radius:20px;
+  letter-spacing:.01em;
+}
+.ws-none{background:#FFEEEC;color:#C0392B;}
+.ws-poor{background:#FFF3E0;color:#A84300;}
 
-  .card-footer {
-    padding: 0.75rem 1.1rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .social-link {
-    font-size: 11px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;
-  }
-  .social-link:hover { color: var(--text); }
-  .action-btns { display: flex; gap: 6px; flex-shrink: 0; }
+/* expand chevron */
+.chev{
+  width:24px;height:24px;border-radius:6px;
+  background:var(--surface2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--faint);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), background .15s;
+}
+.card.open .chev{transform:rotate(180deg);background:var(--accent-light);color:var(--accent);}
 
-  .btn-call {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
-    background: var(--green);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s;
-    white-space: nowrap;
-  }
-  .btn-call:hover { background: #15803D; }
-  .btn-call.na {
-    background: var(--surface2);
-    color: var(--text-faint);
-    cursor: default;
-  }
-  .btn-wa {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 10px;
-    background: #25D366;
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .btn-wa:hover { background: #1DA851; }
-  .btn-wa.na { display: none; }
+/* ─── CARD BODY ─────────────────────────────────────────────── */
+.card-body{display:none;}
+.card.open .card-body{display:block;}
 
-  /* Category colors */
-  .cat-salon { background: #FDF2F8; color: #9D174D; }
-  .cat-bakery { background: #FFFBEB; color: #92400E; }
-  .cat-gym { background: #F0FDF4; color: #14532D; }
-  .cat-tuition { background: #EFF6FF; color: #1E3A8A; }
-  .cat-restaurant { background: #FFF7ED; color: #9A3412; }
-  .cat-cafe { background: #F5F3FF; color: #4C1D95; }
-  .cat-startup { background: #F0FDFA; color: #134E4A; }
-  .cat-shop { background: #FEF3C7; color: #78350F; }
+/* ─── TAB BAR ───────────────────────────────────────────────── */
+.tab-bar{
+  display:flex;
+  background:var(--surface2);
+  border-bottom:1px solid var(--border);
+  padding:0 12px;
+  gap:0;overflow-x:auto;
+  scrollbar-width:none;
+}
+.tab-bar::-webkit-scrollbar{display:none;}
+.stab{
+  font-family:inherit;font-size:12px;font-weight:500;
+  padding:10px 14px;border:none;background:none;
+  color:var(--muted);cursor:pointer;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;transition:all .15s;
+  display:flex;align-items:center;gap:5px;
+}
+.stab:hover{color:var(--text2);}
+.stab.on{color:var(--text);border-bottom-color:var(--accent);font-weight:600;}
+.stab.kptab.on{color:var(--accent);}
 
-  .icon-salon { background: #FDF2F8; }
-  .icon-bakery { background: #FFFBEB; }
-  .icon-gym { background: #F0FDF4; }
-  .icon-tuition { background: #EFF6FF; }
-  .icon-restaurant { background: #FFF7ED; }
-  .icon-cafe { background: #F5F3FF; }
-  .icon-startup { background: #F0FDFA; }
-  .icon-shop { background: #FEF3C7; }
+/* ─── PANES ─────────────────────────────────────────────────── */
+.pane{display:none;padding:16px;}
+.pane.on{display:block;}
 
-  /* Empty state */
-  .empty { text-align: center; padding: 4rem 2rem; color: var(--text-faint); grid-column: 1 / -1; }
-  .empty p { margin-top: 0.5rem; font-size: 13px; }
+/* ─── KEY POINTS PANE ───────────────────────────────────────── */
+.kp-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+}
+@media(max-width:560px){.kp-grid{grid-template-columns:1fr;}}
+.kpi{
+  display:flex;align-items:flex-start;gap:9px;
+  padding:10px 12px;border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  transition:box-shadow .15s,border-color .15s;
+}
+.kpi:hover{box-shadow:var(--shadow-sm);border-color:var(--border2);}
+.kpi-ico{
+  width:24px;height:24px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;flex-shrink:0;
+}
+.kpi-txt{font-size:12.5px;color:var(--text2);line-height:1.45;font-weight:400;}
+.kpi-txt b{font-weight:600;color:var(--text);}
 
-  /* Footer */
-  .foot { padding: 0 2.5rem 2rem; font-size: 11px; color: var(--text-faint); border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem; }
+/* kp type colors */
+.kpi-problem .kpi-ico{background:#FFEEED;color:var(--red);}
+.kpi-miss    .kpi-ico{background:#FFF4E0;color:var(--orange);}
+.kpi-adv     .kpi-ico{background:#EEFBF2;color:var(--green);}
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .header { padding: 1.5rem; }
-    .header h1 { font-size: 1.35rem; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .stat-item + .stat-item { border-left: none; padding-left: 0; }
-    .main { padding: 1.25rem 1rem 2rem; }
-    .cards-grid { grid-template-columns: 1fr; }
-  }
+/* hook row */
+.kp-hook{
+  grid-column:1/-1;
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border-radius:10px;
+  background:var(--accent);
+  border:none;margin-top:2px;
+}
+.kp-hook-ico{
+  width:26px;height:26px;border-radius:6px;
+  background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;
+}
+.kp-hook-body{}
+.kp-hook-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:2px;}
+.kp-hook-txt{font-size:13px;font-weight:600;color:#fff;line-height:1.4;}
+
+/* ─── SCRIPT PANE ───────────────────────────────────────────── */
+.lang-toggle{display:flex;gap:6px;margin-bottom:14px;}
+.langbtn{
+  font-family:inherit;font-size:11px;font-weight:600;
+  padding:4px 12px;border-radius:20px;
+  border:1px solid var(--border2);
+  background:transparent;color:var(--muted);cursor:pointer;
+  transition:all .14s;
+}
+.langbtn.on{background:var(--text);color:#fff;border-color:var(--text);}
+
+.sblock{margin-bottom:12px;}
+.sblock:last-child{margin-bottom:0;}
+.slbl{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--faint);margin-bottom:5px;
+  display:flex;align-items:center;gap:5px;
+}
+.snum{
+  width:16px;height:16px;border-radius:50%;
+  background:var(--surface3);font-size:8px;font-weight:700;
+  color:var(--faint);display:flex;align-items:center;justify-content:center;
+}
+.stext{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-left:2.5px solid var(--accent);
+  border-radius:0 8px 8px 0;
+  padding:10px 13px;
+  font-size:13px;line-height:1.65;color:var(--text2);
+}
+.spk{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:3px;}
+
+.objq{
+  background:var(--red-light);border:1px solid rgba(255,59,48,.15);
+  border-radius:8px;padding:8px 11px;font-size:12.5px;color:#7B1A16;
+  margin-bottom:5px;
+}
+.objql{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:3px;}
+.obja{
+  background:var(--green-light);border:1px solid rgba(52,199,89,.2);
+  border-radius:8px;padding:8px 11px;font-size:12.5px;color:#1A5C2E;
+  margin-bottom:10px;
+}
+.objal{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:3px;}
+
+.tipsbox{
+  background:#FFFDE8;border:1px solid rgba(255,204,0,.3);
+  border-radius:8px;padding:10px 13px;
+}
+.tipslbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#996600;margin-bottom:5px;}
+.tip{font-size:12px;color:#554400;line-height:1.6;padding-left:12px;position:relative;margin-bottom:2px;}
+.tip::before{content:'›';position:absolute;left:0;color:#AA8800;}
+
+.copybtn{
+  margin-top:12px;font-family:inherit;
+  font-size:11px;font-weight:600;padding:6px 14px;
+  border-radius:8px;border:1px solid var(--border2);
+  background:var(--surface2);color:var(--muted);
+  cursor:pointer;transition:all .14s;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.copybtn:hover{background:var(--surface3);color:var(--text);}
+.copybtn.ok{background:var(--green-light);color:var(--green);border-color:rgba(52,199,89,.3);}
+
+/* ─── CATEGORY CHIP COLORS ──────────────────────────────────── */
+.chip-salon     {background:#FFF0F5;color:#C0185D;}
+.chip-bakery    {background:#FFF4EC;color:#B84C00;}
+.chip-gym       {background:#EDFBF3;color:#1A7A3C;}
+.chip-tuition   {background:#EEF3FF;color:#1D3BB8;}
+.chip-restaurant{background:#FFF4EC;color:#B84C00;}
+.chip-cafe      {background:#F5F0FF;color:#6B28B4;}
+.chip-startup   {background:#EDFBFB;color:#0A6B6B;}
+.chip-shop      {background:#FFFBEA;color:#7A5900;}
+
+.icon-salon     {background:#FFF0F5;}
+.icon-bakery    {background:#FFF4EC;}
+.icon-gym       {background:#EDFBF3;}
+.icon-tuition   {background:#EEF3FF;}
+.icon-restaurant{background:#FFF4EC;}
+.icon-cafe      {background:#F5F0FF;}
+.icon-startup   {background:#EDFBFB;}
+.icon-shop      {background:#FFFBEA;}
+
+.dot-salon     {background:#FF2D55;}
+.dot-bakery    {background:#FF9500;}
+.dot-gym       {background:#34C759;}
+.dot-tuition   {background:#3B5BFF;}
+.dot-restaurant{background:#FF9500;}
+.dot-cafe      {background:#AF52DE;}
+.dot-startup   {background:#5AC8FA;}
+.dot-shop      {background:#FFCC00;}
+
+.star-tag{background:#FFFBE6;color:#7A5900;}
+.rev-tag {background:#EDFBF3;color:#1A7A3C;}
+.plat-tag{background:var(--surface3);color:var(--muted);}
+
+/* ─── EMPTY STATE ───────────────────────────────────────────── */
+.empty{text-align:center;padding:60px 20px;color:var(--faint);}
+.empty-ico{font-size:2.5rem;margin-bottom:12px;opacity:.4;}
+.empty p{font-size:13px;}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+.footer{
+  border-top:1px solid var(--border);
+  padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--white);
+}
+.footer-logo svg{height:20px;opacity:.4;}
+.footer-txt{font-size:11px;color:var(--faint);}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media(max-width:640px){
+  .navbar,.hero,.toolbar,.main,.footer{padding-left:14px;padding-right:14px;}
+  .hero{padding-top:24px;padding-bottom:20px;}
+  .stat-row{flex-wrap:wrap;}
+  .stat-card{min-width:calc(50% - 5px);}
+  .nav-center{display:none;}
+}
+
+/* ─── FADE IN ANIMATION ─────────────────────────────────────── */
+.card{animation:fadeUp .25s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-top">
-    <div>
-      <div class="header-eyebrow">Sales Intelligence Report</div>
-      <h1>Trichy & Perambalur<br>Business data </h1>
-      <div class="header-sub">Local businesses without or with poor websites — ripe for outreach</div>
-    </div>
-    <div class="header-badge">data from KT </div>
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <!-- CodeRise Logo SVG — faithfully recreated -->
+    <svg viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- < bracket -->
+      <text x="0" y="44" font-family="'Geist','SF Pro Display',sans-serif" font-size="46" font-weight="800" fill="#1D1D1F">&lt;</text>
+      <!-- CODE in blue -->
+      <text x="32" y="32" font-family="'Geist','SF Pro Display',sans-serif" font-size="26" font-weight="800" fill="#3B5BFF">CODE</text>
+      <!-- RISE in black -->
+      <text x="32" y="56" font-family="'Geist','SF Pro Display',sans-serif" font-size="26" font-weight="800" fill="#1D1D1F">RISE</text>
+      <!-- Chart/arrow icon -->
+      <g transform="translate(124,32)">
+        <!-- bars -->
+        <rect x="0"  y="16" width="5" height="6"  fill="#1D1D1F" rx="1"/>
+        <rect x="7"  y="11" width="5" height="11" fill="#1D1D1F" rx="1"/>
+        <rect x="14" y="6"  width="5" height="16" fill="#1D1D1F" rx="1"/>
+        <!-- arrow line -->
+        <line x1="0" y1="18" x2="21" y2="2" stroke="#1D1D1F" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- arrowhead -->
+        <polyline points="14,0 21,2 19,9" stroke="#1D1D1F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <!-- > bracket in blue -->
+      <text x="152" y="56" font-family="'Geist','SF Pro Display',sans-serif" font-size="46" font-weight="800" fill="#3B5BFF">&gt;</text>
+    </svg>
   </div>
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-val" id="stat-total">25</div>
-      <div class="stat-lbl">Total Leads</div>
+
+  <div class="nav-center">
+    <button class="nav-pill active">Dashboard</button>
+    <button class="nav-pill">Leads</button>
+    <button class="nav-pill">Scripts</button>
+    <button class="nav-pill">Analytics</button>
+  </div>
+
+  <div class="nav-right">
+    <div class="nav-search">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="srch" placeholder="Search leads…" oninput="go()">
     </div>
-    <div class="stat-item">
-      <div class="stat-val">18</div>
-      <div class="stat-lbl">No Website</div>
+    <span class="nav-badge" id="nb">25 Leads</span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      Sales Intelligence · Trichy & Perambalur
     </div>
-    <div class="stat-item">
-      <div class="stat-val">7</div>
-      <div class="stat-lbl">Poor / Outdated</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-val">8</div>
-      <div class="stat-lbl">Categories</div>
+    <h1>Smart Call Scripts<br><span>with Key Points</span></h1>
+    <p class="hero-sub">Every lead enriched with real data, dynamic talking points, and full Tamil & English scripts — ready the moment you dial.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-n blue" id="sn">25</div>
+        <div class="stat-l">Active Leads</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n red">18</div>
+        <div class="stat-l">No Website</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n orange">7</div>
+        <div class="stat-l">Poor / Outdated</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n green">8</div>
+        <div class="stat-l">Categories</div>
+      </div>
     </div>
   </div>
+</section>
+
+<!-- ═══ TOOLBAR ═══════════════════════════════════════════════ -->
+<div class="toolbar">
+  <div class="filter-scroll" id="cats"></div>
+  <div class="res-lbl" id="rc">25 results</div>
 </div>
 
-<div class="main">
-  <div class="filter-section">
-    <div class="filter-label">Filter by category</div>
-    <div class="filters" id="filters"></div>
-  </div>
-  <div class="search-row">
-    <div class="search-box">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="search" placeholder="Search by name, area, description…" oninput="applyFilters()">
-    </div>
-    <div class="results-count" id="results-count">25 leads</div>
-  </div>
-  <div class="cards-grid" id="cards-grid"></div>
-</div>
+<!-- ═══ MAIN ══════════════════════════════════════════════════ -->
+<div class="main" id="main"></div>
 
-<div class="foot">
-  Sources: JustDial · IndiaMart · A2V.in · Wanderlog · Sulekha · Google Maps · Swiggy listings &nbsp;·&nbsp; All businesses confirmed active via Maps/Social presence &nbsp;·&nbsp; Click "Call" to dial directly
-</div>
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="30" font-family="'Geist',sans-serif" font-size="32" font-weight="800" fill="#1D1D1F">&lt;</text>
+      <text x="22" y="22" font-family="'Geist',sans-serif" font-size="18" font-weight="800" fill="#3B5BFF">CODE</text>
+      <text x="22" y="38" font-family="'Geist',sans-serif" font-size="18" font-weight="800" fill="#1D1D1F">RISE</text>
+      <text x="100" y="38" font-family="'Geist',sans-serif" font-size="32" font-weight="800" fill="#3B5BFF">&gt;</text>
+    </svg>
+  </div>
+  <div class="footer-txt">Sources: JustDial · IndiaMart · A2V.in · Google Maps · March 2026</div>
+</footer>
 
+<!-- ═══ JAVASCRIPT ════════════════════════════════════════════ -->
 <script>
-const catMeta = {
-  salon:      { label: 'Salon / Beauty',    icon: '💅', dot: '#DB2777' },
-  bakery:     { label: 'Bakery',            icon: '🎂', dot: '#D97706' },
-  gym:        { label: 'Gym / Fitness',     icon: '🏋️', dot: '#16A34A' },
-  tuition:    { label: 'Tuition / Coaching',icon: '📚', dot: '#2563EB' },
-  restaurant: { label: 'Restaurant',        icon: '🍽️', dot: '#EA580C' },
-  cafe:       { label: 'Café',              icon: '☕', dot: '#7C3AED' },
-  startup:    { label: 'Startup / Wellness',icon: '🚀', dot: '#0D9488' },
-  shop:       { label: 'Local Shop',        icon: '🛍️', dot: '#D97706' },
+const CAT={
+  salon:     {label:'Salon / Beauty', icon:'💅',dot:'dot-salon',    chip:'chip-salon',     icn:'icon-salon'},
+  bakery:    {label:'Bakery',         icon:'🎂',dot:'dot-bakery',   chip:'chip-bakery',    icn:'icon-bakery'},
+  gym:       {label:'Gym / Fitness',  icon:'🏋️',dot:'dot-gym',     chip:'chip-gym',       icn:'icon-gym'},
+  tuition:   {label:'Tuition',        icon:'📚',dot:'dot-tuition',  chip:'chip-tuition',   icn:'icon-tuition'},
+  restaurant:{label:'Restaurant',     icon:'🍽️',dot:'dot-restaurant',chip:'chip-restaurant',icn:'icon-restaurant'},
+  cafe:      {label:'Café',           icon:'☕',dot:'dot-cafe',     chip:'chip-cafe',      icn:'icon-cafe'},
+  startup:   {label:'Startup',        icon:'🚀',dot:'dot-startup',  chip:'chip-startup',   icn:'icon-startup'},
+  shop:      {label:'Local Shop',     icon:'🛍️',dot:'dot-shop',     chip:'chip-shop',      icn:'icon-shop'},
 };
 
-const leads = [
-  {
-    cat: 'salon', name: 'Madhura Makeover',
-    loc: 'K K Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Facebook active',
-    ws: 'none',
-    desc: 'Home bridal makeup & beauty parlour services, popular for events and weddings.',
-    why: 'An online booking page would capture bridal enquiries 24/7 and reduce WhatsApp chaos.'
+const LEADS=[
+  {id:0,cat:'salon',name:'Madhura Makeover',loc:'K K Nagar, Trichy',phone:null,social:'Facebook active',ws:'none',platform:'Facebook',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>No website</b> — bridal enquiries lost to WhatsApp chaos'},{t:'miss',i:'🔍',x:'Brides Google "bridal makeup Trichy" → competitors appear, not you'},{t:'adv',i:'✅',x:'Strong Facebook presence → loyal base ready to convert online'},{t:'miss',i:'💸',x:'No booking page → losing clients who can\'t reach you after hours'},{t:'adv',i:'📸',x:'Home bridal service → premium niche with high Google search demand'},{t:'problem',i:'🚫',x:'Rivals with online portfolios are getting callbacks you should have'}],
+   hook:'Brides book online — are you visible when they search?'},
+  {id:1,cat:'salon',name:'Renuga Beauty Parlour',loc:'Thiruvanaikoil, Trichy',phone:null,social:'Google Maps (4.5 ★)',ws:'none',platform:'Google Maps',rating:'4.5',reviews:null,
+   kp:[{t:'adv',i:'⭐',x:'<b>4.5 ★ on Google Maps</b> — trust already earned by customers'},{t:'problem',i:'⚠️',x:'No website → strong rating not converting to enough new bookings'},{t:'miss',i:'🔍',x:'Ladies searching "parlour near Thiruvanaikoil" find rivals first'},{t:'miss',i:'📋',x:'No service menu online → customers can\'t compare before visiting'},{t:'adv',i:'📍',x:'Established near VS Nagar → high residential foot-traffic area'},{t:'problem',i:'🚫',x:'Photo gallery + service list page = 10× more enquiry calls'}],
+   hook:'You have 4.5 stars — make sure Google shows you to everyone searching.'},
+  {id:2,cat:'salon',name:'Bloom Us Beauty Parlour & Boutique',loc:'Puthur, Trichy',phone:null,social:'Facebook page active',ws:'none',platform:'Facebook',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Dual business</b> (parlour + boutique) with no catalogue site'},{t:'miss',i:'💰',x:'Boutique clothing = zero online sales channel currently'},{t:'adv',i:'✅',x:'Active Facebook page → audience exists, just needs a destination'},{t:'miss',i:'🔍',x:'Search "beauty parlour Puthur" → rivals appear, you don\'t'},{t:'adv',i:'🏘️',x:'Residential area location → local SEO website will rank fast'},{t:'problem',i:'🚫',x:'Two revenue streams need one professional site to grow both'}],
+   hook:'A parlour AND a boutique with no website — double the opportunity lost.'},
+  {id:3,cat:'salon',name:'New Trend Unisex & Beauty Saloon',loc:'Singarathope, Trichy',phone:null,social:'Google Maps listed',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>No website</b> — busy commercial street not ranking on Google'},{t:'miss',i:'🔍',x:'Unisex salons heavily searched online → all traffic going elsewhere'},{t:'adv',i:'📍',x:'Prime commercial street location → high visibility once indexed'},{t:'miss',i:'📸',x:'No before/after portfolio → bridal clients won\'t commit without proof'},{t:'adv',i:'✂️',x:'Unisex format = larger customer base than ladies-only rivals'},{t:'problem',i:'🚫',x:'Singarathope competitors with websites are stealing your walk-ins'}],
+   hook:'Unisex salons rank well on Google — but only if they have a website.'},
+  {id:4,cat:'salon',name:'Glowmere Beauty Studio',loc:'Srirangam, Trichy',phone:null,social:'IndiaMart + Google Maps',ws:'poor',platform:'IndiaMart',rating:null,reviews:null,
+   kp:[{t:'problem',i:'💸',x:'<b>Paying IndiaMart</b> annually for leads you could own for free'},{t:'miss',i:'🔍',x:'IndiaMart lists your rivals beside you — no differentiation possible'},{t:'adv',i:'✅',x:'Listed on two platforms already → digital-ready mindset proven'},{t:'miss',i:'🏷️',x:'No own brand website → clients can\'t see your premium work portfolio'},{t:'adv',i:'📍',x:'Srirangam location → high temple-area tourist footfall year-round'},{t:'problem',i:'🚫',x:'Own site = brand control + zero lead fees + direct Google ranking'}],
+   hook:'Why pay IndiaMart for leads when Google can send them for free?'},
+  {id:5,cat:'bakery',name:'Anbu Bekkery',loc:'Kumaravadi, Trichy',phone:null,social:'Google Maps (5 ★)',ws:'none',platform:'Google Maps',rating:'5',reviews:null,
+   kp:[{t:'adv',i:'⭐',x:'<b>5 ★ Google rating</b> — the best possible social proof available'},{t:'problem',i:'⚠️',x:'No website → 5-star bakers with no online cake ordering option'},{t:'miss',i:'📦',x:'Custom cake orders going to competitors who have order forms'},{t:'miss',i:'🎂',x:'Wedding & birthday season peaks — no pre-order system in place'},{t:'adv',i:'📍',x:'Kumaravadi neighbourhood → loyal local base primed to scale'},{t:'problem',i:'🚫',x:'Weekend phone overload → a website form fixes this instantly'}],
+   hook:'5 stars, no website — your reputation is there, your orders aren\'t.'},
+  {id:6,cat:'bakery',name:'Buy Me Cake',loc:'Kumaravadi, Trichy',phone:null,social:'Google Maps active',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>No order form</b> — all custom requests handled by call or walk-in'},{t:'miss',i:'💰',x:'Bakery-café hybrid = two revenue streams, zero online visibility'},{t:'adv',i:'☕',x:'Café + bakery combo = highly searchable on Google Maps and web'},{t:'miss',i:'📸',x:'No photo gallery → customers can\'t see products before visiting'},{t:'adv',i:'💡',x:'Budget-friendly pricing → high volume potential once found online'},{t:'problem',i:'🚫',x:'Weekend cake orders slipping — a site with a form fixes this now'}],
+   hook:'Bakery + café with no website = leaving weekend revenue untouched.'},
+  {id:7,cat:'bakery',name:'Classic Foods Bakery',loc:'Thillai Nagar, Trichy',phone:null,social:'Wanderlog + Google Maps',ws:'poor',platform:'Wanderlog',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Only on Wanderlog</b> — a travel listing, not a real business site'},{t:'miss',i:'💒',x:'Wedding & birthday cake specialist with no direct booking page'},{t:'adv',i:'📍',x:'Thillai Nagar prime location → very high search demand area'},{t:'miss',i:'🔍',x:'Bridal searches happen online → no portfolio to show couples'},{t:'adv',i:'🎂',x:'Specialised cake niche = strong focus, high-margin product line'},{t:'problem',i:'🚫',x:'Wanderlog is unreliable for business leads — own site is essential'}],
+   hook:'Brides are searching for their wedding cake right now — can they find you?'},
+  {id:8,cat:'bakery',name:'Sri Murugan Bakery',loc:'Perambalur Town',phone:'9360777710',social:'Swiggy listed only',ws:'none',platform:'Swiggy',rating:null,reviews:null,
+   kp:[{t:'problem',i:'💸',x:'<b>Swiggy only</b> — paying 25–30% commission on every single order'},{t:'miss',i:'📍',x:'Only bakery in Perambalur Town with strong local daily demand'},{t:'adv',i:'✅',x:'Already delivery-ready → just needs a direct order channel now'},{t:'miss',i:'💰',x:'₹500 Swiggy order = ₹125+ in commission lost every time'},{t:'adv',i:'🏙️',x:'Perambalur is digitally underserved → easy first-mover advantage'},{t:'problem',i:'🚫',x:'Website + WhatsApp order = same reach, zero commission paid'}],
+   hook:'Swiggy takes ₹125 from every ₹500 order — your website takes nothing.'},
+  {id:9,cat:'gym',name:'Joy Lifestyle Fitness Center',loc:'Woraiyur, Trichy',phone:null,social:'Google Maps active',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>No website</b> — membership plans not visible to any online searcher'},{t:'miss',i:'🗓️',x:'January & June gym-search peaks → no online page to capture them'},{t:'adv',i:'✅',x:'Aerobics + Zumba = unique offering vs generic gyms in Woraiyur'},{t:'miss',i:'📱',x:'No membership signup form → admin calls eating up staff time'},{t:'adv',i:'📍',x:'Ramlinga Nagar, Woraiyur — dense residential area, high demand'},{t:'problem',i:'🚫',x:'New Year resolution wave missed — 3× enquiries need a landing page'}],
+   hook:'3× gym sign-ups happen every January — is your website ready to catch them?'},
+  {id:10,cat:'gym',name:'Premier Fitness Centre',loc:'Woraiyur, Trichy',phone:null,social:'Google Maps listed',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>No website</b> — strength training niche invisible to online searchers'},{t:'miss',i:'🏋️',x:'Serious gym-goers research before joining — you\'re missing them all'},{t:'adv',i:'✅',x:'Strength training focus = high-retention, premium membership tier'},{t:'miss',i:'📸',x:'No transformation results shown → new prospects have a trust gap'},{t:'adv',i:'📍',x:'Lingam Nagar, Woraiyur — growing residential locality with demand'},{t:'problem',i:'🚫',x:'Transformation testimonials on a site = self-selling marketing'}],
+   hook:'Serious lifters research gyms online — show them your results or lose them.'},
+  {id:11,cat:'gym',name:'PSKV Fitness Institute',loc:'Ponmalaipatti, Trichy',phone:null,social:'Google Maps (4.9 ★)',ws:'none',platform:'Google Maps',rating:'4.9',reviews:null,
+   kp:[{t:'adv',i:'🏆',x:'<b>4.9 ★ rating</b> — highest possible trust signal on Google Maps'},{t:'problem',i:'⚠️',x:'No website → near-perfect rating not driving maximum new enquiries'},{t:'miss',i:'🔍',x:'Personalised coaching niche = premium market; hidden without a site'},{t:'miss',i:'💰',x:'Ponmalaipatti searchers land on Woraiyur gyms instead of you'},{t:'adv',i:'✅',x:'4.9 ★ rating will dominate "best gym Trichy" search with a website'},{t:'problem',i:'🚫',x:'Best-rated gym with no website — the easiest fix, the biggest win'}],
+   hook:'4.9 stars on Google. No website. That\'s the most fixable problem in Trichy.'},
+  {id:12,cat:'gym',name:'Mahimaa Ladies Gym & Diet',loc:'K K Nagar, Trichy',phone:null,social:'Facebook active',ws:'none',platform:'Facebook',rating:null,reviews:null,
+   kp:[{t:'adv',i:'👩',x:'<b>Women-only gym</b> — highly searched niche with very low competition'},{t:'problem',i:'⚠️',x:'No website → women researching privately can\'t find you on Google'},{t:'miss',i:'🥗',x:'Diet consultation = premium add-on not promoted anywhere online'},{t:'adv',i:'✅',x:'Active Facebook community → existing audience to drive to a website'},{t:'miss',i:'🔍',x:'"Ladies gym Trichy" search returns zero results for you currently'},{t:'problem',i:'🚫',x:'Women prefer researching before calling — a website removes that barrier'}],
+   hook:'"Ladies gym Trichy" is searched every day — none of those results are you.'},
+  {id:13,cat:'tuition',name:'Annai Tuition Centre',loc:'Trichy Main Road, Perambalur',phone:'9360777710',social:'A2V directory listed',ws:'none',platform:'A2V Directory',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Only on A2V directory</b> — not discoverable on any Google search'},{t:'miss',i:'📚',x:'Highway location serves both Trichy & Perambalur — untapped reach'},{t:'adv',i:'✅',x:'Classes 6th–12th = wide student net, multiple subject enquiry flow'},{t:'miss',i:'📝',x:'April–May admission wave → parents Google tutors, find rivals first'},{t:'adv',i:'📍',x:'Trichy Main Road — high-traffic address, easy for parents to find'},{t:'problem',i:'🚫',x:'Online enrollment form → parents register without a single phone call'}],
+   hook:'Admission season is coming. Parents are Googling tutors right now.'},
+  {id:14,cat:'tuition',name:'Score Tuition Centre',loc:'Srirangam, Trichy',phone:'9655214462',social:'A2V directory listed',ws:'poor',platform:'A2V Directory',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Poor/old website</b> — does more harm than good to credibility'},{t:'miss',i:'📊',x:'10th & 12th board results = strongest selling point not shown online'},{t:'adv',i:'✅',x:'Multi-teacher setup = scalable, trustworthy institution signal'},{t:'miss',i:'👩‍🏫',x:'No faculty profiles online → parents choose centres they can verify'},{t:'adv',i:'📍',x:'Srirangam = densely populated area with massive student demand'},{t:'problem',i:'🚫',x:'Outdated site kills trust — refreshed site multiplies parent confidence'}],
+   hook:'Your old website is hurting you. A new one will 10× parent confidence.'},
+  {id:15,cat:'tuition',name:'Shalom Tuition Center',loc:'Beema Nagar, Trichy',phone:'9688756622',social:'A2V + WhatsApp',ws:'none',platform:'WhatsApp + A2V',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>WhatsApp-only</b> — professional parents expect a real website'},{t:'miss',i:'🔬',x:'Science & maths focus = high-demand subjects, very high search volume'},{t:'adv',i:'✅',x:'Already on WhatsApp → tech-ready, easy to migrate to website forms'},{t:'miss',i:'📄',x:'No study material downloads → free PDFs = trust + SEO traffic'},{t:'adv',i:'📍',x:'Beema Nagar = growing residential area filled with young families'},{t:'problem',i:'🚫',x:'Science-maths tuition + free downloads = fastest-growing niche site type'}],
+   hook:'Free study materials online = parents trust you before they ever call.'},
+  {id:16,cat:'tuition',name:'Kalai Home Tuition',loc:'Woraiyur, Trichy',phone:'9047785801',social:'A2V directory listed',ws:'none',platform:'A2V Directory',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Word-of-mouth only</b> — home tuition reach is artificially capped'},{t:'miss',i:'📍',x:'Woraiyur has dense student population — untapped online demand'},{t:'adv',i:'🏠',x:'Home tuition model = unique convenience angle no one else is using'},{t:'miss',i:'🔍',x:'"Home tutor Woraiyur" returns zero results for you currently'},{t:'adv',i:'✅',x:'Tutor network model = scalable beyond one person\'s capacity'},{t:'problem',i:'🚫',x:'Booking site = match students to tutors 24/7 without phone calls'}],
+   hook:'"Home tutor near me" — nobody finds you yet. That\'s fixable today.'},
+  {id:17,cat:'tuition',name:'Friends Tuition Centre',loc:'Theppakula Street, Trichy',phone:'8124207276',social:'A2V listed',ws:'none',platform:'A2V Directory',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Dual model</b> (centre + home) with no digital explanation anywhere'},{t:'miss',i:'📝',x:'Parents don\'t know about the home option — no website to tell them'},{t:'adv',i:'✅',x:'Two-format flexibility = stronger offering than single-mode rivals'},{t:'miss',i:'🔍',x:'Theppakula Street centre invisible in every Google search'},{t:'adv',i:'👨‍👩‍👧',x:'Primary + secondary coverage = wider age range, more enrollments'},{t:'problem',i:'🚫',x:'Website explaining both options = more enquiries per parent visit'}],
+   hook:'You have two products — parents online don\'t know either exists.'},
+  {id:18,cat:'restaurant',name:'Banana Leaf Restaurant',loc:'Airport Road, Trichy',phone:null,social:'Google Maps (many reviews)',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'adv',i:'✈️',x:'<b>Airport Road location</b> — high tourist and traveller traffic daily'},{t:'problem',i:'⚠️',x:'No website → "restaurants near Trichy airport" results exclude you'},{t:'miss',i:'🌍',x:'Tourists Google restaurants before landing — you\'re invisible to them'},{t:'adv',i:'🍛',x:'South Indian thali = iconic menu tourists specifically seek out'},{t:'miss',i:'📋',x:'No menu online → travel bloggers & influencers can\'t feature you'},{t:'problem',i:'🚫',x:'Airport traffic = highest-intent restaurant audience in Trichy'}],
+   hook:'Travellers Google restaurants before they land. Are you on that list?'},
+  {id:19,cat:'restaurant',name:'Sri Gowri Krishnaa Hotel',loc:'Thillai Nagar, Trichy',phone:null,social:'Wanderlog + Google Maps',ws:'poor',platform:'Wanderlog',rating:null,reviews:null,
+   kp:[{t:'problem',i:'⚠️',x:'<b>Poor online presence</b> for a well-known vegetarian hotel brand'},{t:'miss',i:'🍽️',x:'No online table booking → weekday seats consistently going empty'},{t:'adv',i:'✅',x:'Established brand name in Thillai Nagar → strong existing trust'},{t:'miss',i:'📋',x:'No digital menu → online food discovery platforms skip you'},{t:'adv',i:'🌿',x:'Pure veg = strong niche searched by families & pilgrims in Trichy'},{t:'problem',i:'🚫',x:'Updated site + table booking = 20–30% more weekday occupancy'}],
+   hook:'Your brand name is strong — your online presence doesn\'t match it yet.'},
+  {id:20,cat:'restaurant',name:'Kannappa Restaurant',loc:'Palakarai, Trichy',phone:null,social:'Google Maps listed',ws:'none',platform:'Google Maps',rating:null,reviews:null,
+   kp:[{t:'adv',i:'🍖',x:'<b>Mutton biryani & Chettinad</b> = high-demand, heavily searched cuisine'},{t:'problem',i:'⚠️',x:'Walk-in only with no parcel order system — missed revenue every day'},{t:'miss',i:'📦',x:'Parcel orders for offices & events = zero channel currently available'},{t:'adv',i:'📍',x:'Palakarai central location → high local search volume confirmed'},{t:'miss',i:'📞',x:'Peak hour calls missed → an online pre-order form solves this today'},{t:'problem',i:'🚫',x:'Chettinad biryani is Googled heavily — your restaurant should appear'}],
+   hook:'People search "Chettinad biryani Trichy" every day — you don\'t show up.'},
+  {id:21,cat:'cafe',name:'The Chocoholic',loc:'Thillai Nagar, Trichy',phone:null,social:'Instagram active (desserts)',ws:'none',platform:'Instagram',rating:null,reviews:null,
+   kp:[{t:'adv',i:'📸',x:'<b>Active Instagram</b> — engaged visual followers already exist'},{t:'problem',i:'⚠️',x:'Instagram-only = algorithm can cut your reach any day without warning'},{t:'miss',i:'🏢',x:'Corporate gifting (bulk chocolates) = zero channel to capture it'},{t:'miss',i:'💰',x:'Premium custom chocolates → no price list or order form anywhere'},{t:'adv',i:'🍫',x:'Custom chocolates = seasonal peak demand (Diwali, Christmas, V-Day)'},{t:'problem',i:'🚫',x:'Instagram fans can\'t order easily — a website converts them'}],
+   hook:'Your chocolates look amazing. Now give people a way to order them online.'},
+  {id:22,cat:'cafe',name:'Brown Sugar by Devaki Vijayaraman',loc:'Thillai Nagar, Trichy',phone:null,social:'Instagram active',ws:'none',platform:'Instagram',rating:null,reviews:null,
+   kp:[{t:'adv',i:'🎨',x:'<b>Strong personal brand</b> — named brand signals premium positioning'},{t:'problem',i:'⚠️',x:'No website = premium brand without a premium online address'},{t:'miss',i:'🍰',x:'Artisan cakes → corporate clients need a portfolio link to share'},{t:'miss',i:'💼',x:'No pricing page → premium clients won\'t negotiate over Instagram DM'},{t:'adv',i:'📍',x:'Thillai Nagar = upmarket area, premium buyers are right there'},{t:'problem',i:'🚫',x:'A named artisan brand needs a website to command premium pricing'}],
+   hook:'Premium brands have websites. Instagram is just the teaser.'},
+  {id:23,cat:'startup',name:'Revamp Fitness & Wellness',loc:'K K Nagar, Trichy',phone:null,social:'Google Maps + Instagram',ws:'none',platform:'Google Maps + Instagram',rating:null,reviews:null,
+   kp:[{t:'adv',i:'🚀',x:'<b>Gym + diet + mental wellness</b> = first-of-its-kind in Trichy'},{t:'problem',i:'⚠️',x:'No website → corporate HR can\'t find or pitch you as a partner'},{t:'miss',i:'🏢',x:'Corporate wellness contracts = ₹50K+ deals that need a website'},{t:'adv',i:'✅',x:'Google Maps + Instagram active → digital-native team ready to grow'},{t:'miss',i:'📊',x:'No service packages online → clients can\'t self-qualify or compare'},{t:'problem',i:'🚫',x:'First-mover advantage in Trichy wellness — claim it with a site now'}],
+   hook:'Trichy has no wellness brand with a website. You could be the first.'},
+  {id:24,cat:'shop',name:'Trichy Cosmetics Center',loc:'Tiruchirappalli Central',phone:null,social:'IndiaMart (4 ★, 126 reviews)',ws:'poor',platform:'IndiaMart',rating:'4',reviews:'126',
+   kp:[{t:'adv',i:'⭐',x:'<b>126 reviews, 4 ★ on IndiaMart</b> — proven buyer trust at scale'},{t:'problem',i:'💸',x:'IndiaMart charges per lead + annual fee — recurring cost, nothing owned'},{t:'miss',i:'🔍',x:'B2B buyers (salons, parlours) search Google first — not IndiaMart'},{t:'adv',i:'✅',x:'GST registered → fully credible, ready for a B2B wholesale website'},{t:'miss',i:'📦',x:'No product catalogue site → bulk buyers can\'t browse without calling'},{t:'problem',i:'🚫',x:'Own site = 126 reviews worth of trust + zero commission to anyone'}],
+   hook:'126 people trust you on IndiaMart. Imagine if Google sent them instead.'},
+];
+
+const SCRIPTS={
+  salon:{
+    tamil:{open:`நமஸ்காரம், நான் [உங்கள் பெயர்] பேசுகிறேன் — CodeRise website design company-லிருந்து. நீங்கள் [BIZ]-ஐ நடத்துகிறீர்களா? சரியான நேரத்தில் call பண்றேன்னு நம்புகிறேன் — ஒரு 2 நிமிடம் பேசலாமா?`,pitch:`உங்கள் parlour பத்தி Google Maps-ல பார்த்தேன் — நல்லா இருக்கு. ஆனா website இல்லாம, bride-s Google-ல தேடும்போது உங்களை miss பண்ணிட்டாங்க. ஒரு simple website வச்சா — bridal enquiry, service list, before/after photos எல்லாம் ஒரே இடத்துல போடலாம். நீங்கள் தூங்கும் நேரத்துலயும் customer வருவாங்க!`,close:`ஒரு 30 நிமிட free demo fix பண்ணலாமா? பிடிச்சா proceed பண்ணலாம். No pressure. என் WhatsApp-ல details அனுப்புறேன்.`,objections:[{q:`"Website வேணாம், Facebook போதும்"`,a:`Facebook algorithm-கிட்ட depend ஆனா reach குறையும். Website-ல Google-ல rank ஆகும் — இரண்டும் சேர்ந்து double power!`},{q:`"விலை அதிகமா இருக்கும்"`,a:`ஒரு bridal booking மட்டும் வரும்னா website cost recover ஆயிடும். Basic site ₹3,999 start — monthly fee இல்ல.`},{q:`"Time இல்ல"`,a:`நாங்களே handle பண்றோம். நீங்க ஒரு நாள் content குடுத்தா போதும்.`}],tips:[`Bride season (Oct–Feb) mention பண்ணுங்க`,`"நல்ல reviews இருக்கு, ஆனா website இல்ல" என்று specific-ஆ சொல்லுங்க`,`WhatsApp-ல demo link அனுப்புங்க`]},
+    english:{open:`Good morning! Am I speaking with the owner of [BIZ]? My name is [Your Name] from CodeRise — we help Trichy businesses get more customers through professional websites. Do you have 2 minutes?`,pitch:`I came across your salon on Google Maps — great reviews! But brides searching "best salon in [area]" land on competitors with websites. A simple site with your services, pricing, and before/after photos could bring 10–15 new enquiries monthly — even while you're with a client.`,close:`Can we schedule a free 30-minute demo this week? No obligation. I'll send the details on WhatsApp right now.`,objections:[{q:`"I already have Facebook / Instagram"`,a:`Social media is great, but Google search is where buying decisions happen. 72% search Google before visiting a salon. A website makes you show up there 24/7.`},{q:`"It's too expensive"`,a:`Just one bridal booking pays for the entire website. We start at ₹3,999 — no monthly fees, no hidden costs.`},{q:`"I don't have time"`,a:`We handle everything. You give us 1 hour once — the website is live. Zero technical knowledge needed.`}],tips:[`Mention bridal season (Oct–Feb) as peak opportunity`,`Reference their exact Google Maps rating`,`Send WhatsApp demo link immediately after the call`]}
   },
-  {
-    cat: 'salon', name: 'Renuga Beauty Parlour',
-    loc: 'Thiruvanaikoil, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps (4.5 ★)',
-    ws: 'none',
-    desc: 'Full-service ladies parlour near VS Nagar with strong local repeat clientele.',
-    why: 'A service menu & photo gallery site builds credibility and ranks on Google search.'
+  bakery:{
+    tamil:{open:`நமஸ்காரம்! [BIZ] owner-ஓட பேசுறேனா? நான் [உங்கள் பெயர்] — CodeRise, Trichy-ல businesses-க்கு website செய்யுற company. ஒரு 2 நிமிடம் பேசலாமா?`,pitch:`உங்கள் bakery-ஓட reviews நல்லா இருக்கு. Swiggy/Zomato மூலமா order வந்தா 25–30% commission போகுது. Own website இருந்தா directly order வரும், commission இல்ல. Birthday, wedding cakes photos போட்டு WhatsApp order form வையுங்க — week-end orders double ஆகும்!`,close:`Similar bakery-க்கு sample காட்டட்டுமா? WhatsApp-ல link அனுப்புறேன்.`,objections:[{q:`"Swiggy போதும்"`,a:`Swiggy commission ₹500 order-ல ₹125 எடுக்கும். Direct order வந்தா full ₹500 உங்களுக்கே.`},{q:`"Phone-ல வருது"`,a:`Form வச்சா customers size, flavor, date pre-fill பண்ணுவாங்க. Phone time குறையும்.`},{q:`"பணம் வேணும்"`,a:`₹4,999-ல full bakery website — photo gallery, order form. ஒரே wedding cake order recover பண்ணிடும்.`}],tips:[`Commission savings angle strong-ஆ use`,`Season cakes (Pongal, Christmas) mention`,`Photo-heavy demo காட்டுங்க`]},
+    english:{open:`Hi, am I speaking with the owner of [BIZ]? I'm [Your Name] from CodeRise. Got 2 minutes?`,pitch:`For every Swiggy or Zomato order, you're paying 25–30% commission. With your own website, customers order directly — no commission. A page with your cakes, an order form, and WhatsApp integration can double your weekend bookings.`,close:`I've built something similar for another Trichy bakery — want to see it? I'll WhatsApp you the sample now.`,objections:[{q:`"We get enough orders"`,a:`But you're sharing revenue. Own website = 100% kept. Plus, corporate gifting orders come through Google, not Swiggy.`},{q:`"Website is complicated"`,a:`Just a photo gallery, price list, and WhatsApp button. Nothing to manage.`},{q:`"Budget is tight"`,a:`Starter at ₹3,999, no monthly charges. One bulk order covers it completely.`}],tips:[`Lead with commission savings`,`Mention corporate cake gifting as new revenue`,`Send visually rich food photography demo`]}
   },
-  {
-    cat: 'salon', name: 'Bloom Us Beauty Parlour & Boutique',
-    loc: 'Puthur, Trichy',
-    phone: null, wa: null,
-    social: 'Facebook page active',
-    ws: 'none',
-    desc: 'Combined beauty parlour + boutique clothing store in a residential neighbourhood.',
-    why: 'Dual offerings need a catalogue website to drive footfall and enable online orders.'
+  gym:{
+    tamil:{open:`நமஸ்காரம்! [BIZ] owner பேசுறாங்களா? நான் [உங்கள் பெயர்], CodeRise — gym & fitness businesses-க்கு website செய்யுறோம்.`,pitch:`Google-ல "gym near me" search பண்றவங்க website இருக்குற gym-ஐ visit பண்றாங்க. உங்களுக்கு நல்ல rating இருக்கு, but website இல்லாம Google front-ல வர மாட்டீங்க. Membership plans, timing, trainer photos போட்டா phone call இல்லாம new members வருவாங்க.`,close:`உங்க gym-க்கு match ஆன sample design WhatsApp-ல அனுப்புறேன். பாருங்க.`,objections:[{q:`"Word of mouth போதும்"`,a:`New person Trichy-க்கு shift ஆனா Google-ல தான் search பண்ணுவாங்க. Website இல்லாம அவங்களை miss பண்றீங்க.`},{q:`"Members full"`,a:`January, June peak season — website இருந்தா waitlist manage பண்ணலாம்.`},{q:`"விலை?"`,a:`₹4,999 basic gym site. ஒரே member-ஓட 3 month fee recover பண்ணும்.`}],tips:[`Jan 1 & June "resolution" season leverage`,`Transformation before/after photos offer`,`Ladies gym → privacy angle`]},
+    english:{open:`Hello! Is this the owner of [BIZ]? I'm [Your Name] from CodeRise — we build websites for gyms in Trichy. 2 minutes?`,pitch:`When someone new searches "gym near me", they pick gyms with websites — they see plans, timings, trainers. A website means more walk-ins every January and summer when enquiries spike 3×.`,close:`I'd love to send you a sample gym website on WhatsApp. If you like it, we talk. Fair enough?`,objections:[{q:`"We run on referrals"`,a:`Referrals still Google the gym before visiting. A website with results confirms the referral and closes the deal.`},{q:`"Not tech-savvy"`,a:`We set it all up. You tell us your plans and timings. After that, it runs itself.`},{q:`"Cost?"`,a:`Starting ₹4,999, one-time. One new 3-month membership pays for it.`}],tips:[`January and June are peak gym enquiry seasons`,`Offer trainer profiles and transformation results`,`Ladies-only gyms: emphasise privacy`]}
   },
-  {
-    cat: 'salon', name: 'New Trend Unisex & Beauty Saloon',
-    loc: 'Singarathope, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps listed',
-    ws: 'none',
-    desc: 'Unisex salon on a busy commercial street with bridal makeup services.',
-    why: 'Before/after photos and pricing page converts online searchers to walk-in customers.'
+  tuition:{
+    tamil:{open:`நமஸ்காரம்! [BIZ]-ஐ நடத்துகிறீர்களா? நான் [உங்கள் பெயர்], CodeRise — educational websites பண்றோம். 2 நிமிடம் பேசலாமா?`,pitch:`10th, 12th exam season-ல parents Google-ல "best tuition near me" search பண்றாங்க. Website இருக்குற centre-கிட்ட போறாங்க — subject list, fees, batch timing, teacher profiles தெரியும். உங்களுக்கு website இருந்தா parents directly enquiry form fill பண்ணுவாங்க.`,close:`Sample tuition website WhatsApp-ல அனுப்புறேன். April/May admission season-க்கு முன்னாடி ready ஆனா நல்லது!`,objections:[{q:`"Recommend-ல வருவாங்க"`,a:`New area parents miss ஆகுவாங்க. Website இருந்தா அவங்களும் find பண்ணுவாங்க.`},{q:`"Results போட முடியாது"`,a:`Batch timing, subjects மட்டும் போட்டாலே போதும். Enquiry form போதும்.`},{q:`"Busy"`,a:`Exactly! 2 weeks-ல live ஆகிடும் — next batch-க்கு ready.`}],tips:[`March–May admission season intensive outreach`,`Free study material download offer`,`Board exam season timing critical`]},
+    english:{open:`Good morning! Am I speaking with the coordinator at [BIZ]? I'm [Your Name] from CodeRise — we build websites for tuition centres in Trichy. 2 minutes?`,pitch:`Every April and May, parents search Google for tuition centres. Centres with websites — showing subject lists, timings, teacher profiles — get enquiries first. A website with an enquiry form can bring 15–20 new student calls monthly, automatically.`,close:`Admission season is coming. Can I send you a sample site on WhatsApp? 30 seconds to review — we can go live within 2 weeks before the rush.`,objections:[{q:`"Word of mouth is enough"`,a:`Great — but it has a ceiling. A website multiplies trust to people searching fresh in your area.`},{q:`"Don't want to publish fees"`,a:`No problem — just show subject list, batch info, and an enquiry form. No fees needed at all.`},{q:`"After exams"`,a:`That's actually worst timing — by then the new batch fills elsewhere. Get live now for the post-result wave.`}],tips:[`Call February–April for maximum impact`,`Offer downloadable study material as lead magnet`,`Emphasise board result announcements as traffic spikes`]}
   },
-  {
-    cat: 'salon', name: 'Glowmere Beauty Studio',
-    loc: 'Srirangam, Trichy',
-    phone: null, wa: null,
-    social: 'IndiaMart + Google Maps',
-    ws: 'poor',
-    desc: 'Skin & hair care services; active on IndiaMart but lacks a standalone website.',
-    why: 'Moving off IndiaMart to own website saves lead fees and owns the customer relationship.'
+  restaurant:{
+    tamil:{open:`நமஸ்காரம்! [BIZ]-ஓட owner-ஓட பேசுறேனா? நான் [உங்கள் பெயர்], CodeRise — restaurant websites செய்யுற company.`,pitch:`உங்கள் hotel Google-ல listed ஆகி இருக்கு. ஆனா website இல்லாம Zomato/Swiggy commission கட்டணும். Own website-ல menu, timing, parcel order form வச்சா directly customer வருவாங்க.`,close:`Restaurant demo WhatsApp-ல அனுப்புறேன். 2 நிமிடம் பாருங்க.`,objections:[{q:`"Zomato-ல போட்டா போச்சு"`,a:`Zomato 25–30% commission எடுக்கிறாங்க. Direct order வந்தா full amount உங்களுக்கே.`},{q:`"Menu change ஆகும்"`,a:`WhatsApp-ல photo அனுப்பினா menu update பண்ணுவோம்.`},{q:`"Costly"`,a:`₹4,999. ஒரே corporate parcel order recover பண்ணிடும்.`}],tips:[`Airport road → tourist angle`,`Wedding catering potential mention`,`Google Maps + website combo explain`]},
+    english:{open:`Hi! Is this the owner of [BIZ]? I'm [Your Name] from CodeRise — I build websites for restaurants in Trichy. 2 minutes?`,pitch:`Travellers search "restaurants near Trichy airport" and see competitors with websites first. A site with your menu, timings, and parcel form puts you at the top of Google — and cuts Swiggy commission on direct orders.`,close:`Let me send a sample restaurant website on WhatsApp. 2 minutes to view — yours can be live in 10 days.`,objections:[{q:`"Already on Zomato"`,a:`Keep it. But every direct website order = zero commission. 20 direct parcel orders/month saves ₹5,000–8,000.`},{q:`"Menu changes daily"`,a:`You message us, we update same day. Or 2-click self-edit.`},{q:`"No delivery"`,a:`Perfect — focus on dine-in photos, ambiance, location map, table booking. That's what searchers want.`}],tips:[`Airport proximity is a strong USP`,`Mention wedding/function catering potential`,`Show food photography layout`]}
   },
-  {
-    cat: 'bakery', name: 'Anbu Bekkery',
-    loc: 'Kumaravadi, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps (5 ★)',
-    ws: 'none',
-    desc: 'Popular neighbourhood bakery for custom cakes and baked snacks; strong word-of-mouth.',
-    why: 'An online pre-order page would capture cake orders 24/7 and reduce phone chaos.'
+  cafe:{
+    tamil:{open:`Hi, [BIZ]-ஐ run பண்றீங்களா? நான் [உங்கள் பெயர்], CodeRise — cafes & dessert brands-க்கு websites. 2 min இருக்கா?`,pitch:`Instagram-ல இருக்கீங்க — photos super! ஆனா algorithm change ஆனா reach drop. Website இருந்தா Google-ல rank ஆகும், corporate gifting orders வரும்.`,close:`உங்க brand aesthetic-க்கு match ஆன demo அனுப்புறேன். Instagram feel-ஐயே website-ல கொண்டு வரலாம்.`,objections:[{q:`"Instagram போதும்"`,a:`Corporate client bulk order place பண்ண proper website link வேணும்.`},{q:`"Aesthetic unique"`,a:`அதனால தான் custom design! உங்க Instagram colour palette mirror பண்றோம்.`},{q:`"Right time இல்ல"`,a:`Valentine's, Pongal season வருது — இப்போவே ready ஆனா benefit.`}],tips:[`Instagram-to-website conversion angle`,`Corporate chocolate/cake gifting upsell`,`Aesthetic-matching demo crucial`]},
+    english:{open:`Hi! Am I speaking with the owner of [BIZ]? I'm [Your Name] from CodeRise — we build websites for cafés and dessert brands. Quick 2 minutes?`,pitch:`Your Instagram is beautiful! But Instagram's algorithm is unpredictable. A website gives you a permanent home on Google where corporate clients always find your price list and order form — regardless of algorithm changes.`,close:`I'll design it to match your brand's aesthetic exactly — your colours, your vibe. Sending a concept on WhatsApp now.`,objections:[{q:`"Instagram brings enough orders"`,a:`But Instagram can't capture corporate gifting. Companies want a website catalogue for bulk orders — that's huge revenue waiting.`},{q:`"My aesthetic is specific"`,a:`Perfect reason for custom design — we'll mirror your Instagram palette and typography exactly.`},{q:`"Can't afford it"`,a:`One corporate gifting order — 50 custom boxes — easily covers our full cost.`}],tips:[`Lead with Instagram algorithm risk`,`Corporate gifting = killer upsell for dessert cafés`,`Show design-forward café website portfolio`]}
   },
-  {
-    cat: 'bakery', name: 'Buy Me Cake',
-    loc: 'Kumaravadi, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps active',
-    ws: 'none',
-    desc: 'Bakery-café hybrid; popular for custom cakes and daily snacks at budget prices.',
-    why: 'A custom cake enquiry form drives weekend orders without depending on phone calls.'
+  startup:{
+    tamil:{open:`நமஸ்காரம்! [BIZ]-ஐ நடத்துகிறீர்களா? நான் [உங்கள் பெயர்], CodeRise — growing businesses-க்கு professional websites. 2 min பேசலாமா?`,pitch:`Gym + diet + wellness — super unique concept. Corporate clients, HR managers "wellness partner" தேடும்போது Google-ல search பண்றாங்க. Website இல்லாம அவங்க உங்களை கண்டுபிடிக்க முடியாது.`,close:`Wellness brand website sample அனுப்புறேன். Corporate pitch-க்கு எவ்வளவு help ஆகும்னு தெரியும்.`,objections:[{q:`"Later"`,a:`Competition early-ஆ போட்டவங்களுக்கே போகும். 6 months-ல Google rank.`},{q:`"Social media போதும்"`,a:`Corporate HR managers social media-ல decide பண்ண மாட்டாங்க — website + proposal வேணும்.`}],tips:[`"First mover in Trichy wellness" angle powerful`,`Corporate contracts = high ticket, emphasise ROI`,`LinkedIn + website combo suggest`]},
+    english:{open:`Hello! Is this the founder of [BIZ]? I'm [Your Name] from CodeRise — we help growing startups in Trichy build professional websites. 2 minutes?`,pitch:`Your concept is genuinely unique in Trichy. But corporate HR managers searching for a "wellness partner" will Google it. Without a website, you're invisible to them. A professional site with service packages and a B2B enquiry form could land you contracts worth ₹50,000+ per deal.`,close:`I'd like to send you a reference wellness brand website. 2 minutes to review.`,objections:[{q:`"Still figuring out offerings"`,a:`Fine — even a clean landing page with 3 core services starts appearing on Google and building credibility.`},{q:`"Once we're bigger"`,a:`The website is what helps you get bigger. Early web presence = early B2B opportunities.`}],tips:[`Position as first wellness brand in Trichy online`,`B2B corporate angle = biggest revenue unlock`,`LinkedIn + website combo for max credibility`]}
   },
-  {
-    cat: 'bakery', name: 'Classic Foods Bakery',
-    loc: 'Thillai Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Wanderlog + Google Maps',
-    ws: 'poor',
-    desc: 'Specialises in wedding & birthday cakes; listed on Wanderlog but no owned website.',
-    why: 'Bridal season orders need a booking page — third-party listings are unreliable.'
-  },
-  {
-    cat: 'bakery', name: 'Sri Murugan Bakery',
-    loc: 'Perambalur Town',
-    phone: '9360777710', wa: '9360777710',
-    social: 'Swiggy listed only',
-    ws: 'none',
-    desc: 'Local bakery in Perambalur serving breads, puffs, and snacks; only on Swiggy.',
-    why: 'Own website breaks Swiggy commission dependency and builds a loyal direct customer base.'
-  },
-  {
-    cat: 'gym', name: 'Joy Lifestyle Fitness Center',
-    loc: 'Ramlinga Nagar, Woraiyur, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps active',
-    ws: 'none',
-    desc: 'General gym with aerobics and Zumba classes; active local membership base.',
-    why: 'Online membership signup page reduces admin calls and enables easy plan upgrades.'
-  },
-  {
-    cat: 'gym', name: 'Premier Fitness Centre',
-    loc: 'Lingam Nagar, Woraiyur, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps listed',
-    ws: 'none',
-    desc: 'Neighbourhood gym focused on strength and weight training in Woraiyur area.',
-    why: 'Transformation testimonials on a website build trust and drive new walk-in trials.'
-  },
-  {
-    cat: 'gym', name: 'PSKV Fitness Institute',
-    loc: 'Ponmalaipatti, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps (4.9 ★)',
-    ws: 'none',
-    desc: 'Highly rated fitness institute with personalised coaching; a hidden gem in Trichy.',
-    why: 'A 4.9 ★ rating with no website means losing serious searchers to less-rated rivals.'
-  },
-  {
-    cat: 'gym', name: 'Mahimaa Ladies Gym & Diet',
-    loc: 'K K Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Facebook active',
-    ws: 'none',
-    desc: 'Women-only gym offering diet consultation and weight management programmes.',
-    why: 'A women-focused website with diet plan demos builds trust and drives enrollments.'
-  },
-  {
-    cat: 'tuition', name: 'Annai Tuition Centre',
-    loc: 'Trichy Main Road, Perambalur',
-    phone: '9360777710', wa: '9360777710',
-    social: 'A2V directory listed',
-    ws: 'none',
-    desc: 'School tuition centre near Trichy–Perambalur highway serving 6th–12th students.',
-    why: 'Online enrollment form with subject listing helps parents compare and register faster.'
-  },
-  {
-    cat: 'tuition', name: 'Score Tuition Centre',
-    loc: 'Srirangam, Trichy',
-    phone: '9655214462', wa: '9655214462',
-    social: 'A2V directory listed',
-    ws: 'poor',
-    desc: 'Coaching centre for 10th & 12th state board with a multi-teacher setup.',
-    why: 'Stale directory listing needs a refreshed site with board results and faculty profiles.'
-  },
-  {
-    cat: 'tuition', name: 'Shalom Tuition Center',
-    loc: 'Beema Nagar, Trichy',
-    phone: '9688756622', wa: '9688756622',
-    social: 'A2V listed + WhatsApp',
-    ws: 'none',
-    desc: 'School-level tuition centre focusing on science and maths for board students.',
-    why: 'Free downloadable study materials on a website builds parent trust and boosts walk-ins.'
-  },
-  {
-    cat: 'tuition', name: 'Kalai Home Tuition',
-    loc: 'Woraiyur, Trichy',
-    phone: '9047785801', wa: '9047785801',
-    social: 'A2V directory listed',
-    ws: 'none',
-    desc: 'Home tuition service connecting tutors to students across the Woraiyur area.',
-    why: 'A simple booking site replaces word-of-mouth dependency and grows reach to nearby areas.'
-  },
-  {
-    cat: 'tuition', name: 'Friends Tuition Centre',
-    loc: 'Theppakula Street, Trichy',
-    phone: '8124207276', wa: '8124207276',
-    social: 'A2V listed',
-    ws: 'none',
-    desc: 'Tuition centre + home tuition network for primary and secondary students.',
-    why: 'Dual model needs a website to clearly explain both options and let parents book online.'
-  },
-  {
-    cat: 'restaurant', name: 'Banana Leaf Restaurant',
-    loc: 'Airport Road, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps (many reviews)',
-    ws: 'none',
-    desc: 'Popular family restaurant near Trichy airport serving South Indian thali meals.',
-    why: 'Airport traveller traffic demands a menu website with directions and timing info.'
-  },
-  {
-    cat: 'restaurant', name: 'Sri Gowri Krishnaa Hotel',
-    loc: 'Thillai Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Wanderlog + Google Maps',
-    ws: 'poor',
-    desc: 'Well-known vegetarian hotel with a Thillai Nagar branch; limited online presence.',
-    why: 'Online table bookings and a menu PDF on the website increases weekday occupancy.'
-  },
-  {
-    cat: 'restaurant', name: 'Kannappa Restaurant',
-    loc: 'Palakarai, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps listed',
-    ws: 'none',
-    desc: 'Popular for mutton biryani and Chettinad specials; completely walk-in only.',
-    why: 'Parcel order page and Google Business profile reduces missed calls during peak hours.'
-  },
-  {
-    cat: 'cafe', name: 'The Chocoholic',
-    loc: 'Thillai Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Instagram active (desserts)',
-    ws: 'none',
-    desc: 'Dessert café specialising in custom chocolates and baked goods; Instagram-only marketing.',
-    why: 'A gifting and custom order page unlocks corporate sales that Instagram cannot handle.'
-  },
-  {
-    cat: 'cafe', name: 'Brown Sugar by Devaki Vijayaraman',
-    loc: 'Thillai Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Instagram active',
-    ws: 'none',
-    desc: 'Home-baker turned café concept with artisan desserts and custom celebration cakes.',
-    why: 'A professional website with a portfolio and pricing page legitimises the brand for premium clients.'
-  },
-  {
-    cat: 'startup', name: 'Revamp Fitness & Wellness',
-    loc: 'K K Nagar, Trichy',
-    phone: null, wa: null,
-    social: 'Google Maps + Instagram',
-    ws: 'none',
-    desc: 'Emerging wellness startup combining gym, diet consulting, and mental wellness programmes.',
-    why: 'Multi-service startup urgently needs a website to pitch and win corporate wellness contracts.'
-  },
-  {
-    cat: 'shop', name: 'Trichy Cosmetics Center',
-    loc: 'Tiruchirappalli Central',
-    phone: null, wa: null,
-    social: 'IndiaMart (4 ★, 126 reviews)',
-    ws: 'poor',
-    desc: 'Retail cosmetics dealer with GST registration; active on IndiaMart only.',
-    why: 'Own product catalogue site removes IndiaMart commission dependency and grows B2B reach.'
+  shop:{
+    tamil:{open:`நமஸ்காரம்! [BIZ]-ஐ நடத்துகிறீர்களா? நான் [உங்கள் பெயர்], CodeRise — small businesses-க்கு online presence உருவாக்கி தருறோம். 2 min பேசலாமா?`,pitch:`IndiaMart-ல நல்லா reviews இருக்கு! ஆனா IndiaMart-க்கு yearly fee, leads commission போகும். Own website இருந்தா product catalogue, bulk order form, GST invoice download direct-ஆ நடக்கும்.`,close:`Product catalogue website demo அனுப்புறேன் — IndiaMart-லிருந்து எப்படி shift ஆகலாம்னு காட்டுறேன்.`,objections:[{q:`"IndiaMart போதும்"`,a:`Own website parallel-ல வையுங்க. IndiaMart போனா? Own site இருந்தா business safe.`},{q:`"Too many products"`,a:`Top 20–30 products + enquiry form போதும். Category-wise list.`}],tips:[`"Platform dependency risk" angle use`,`GST invoice + bulk order form as key features`,`B2B catalogue site demo show`]},
+    english:{open:`Hello! Am I speaking with the owner of [BIZ]? My name is [Your Name] from CodeRise — we help wholesale businesses move from third-party platforms to their own professional website. 2 minutes?`,pitch:`I saw your IndiaMart listing — 126 reviews, 4-star rating. But you're paying IndiaMart annually for their platform. With your own website, your product catalogue lives permanently on Google — for free, forever. B2B buyers search Google first, not IndiaMart.`,close:`Let me send you a sample B2B cosmetics catalogue website on WhatsApp. 2 minutes to review.`,objections:[{q:`"IndiaMart gives enough leads"`,a:`Keep it as secondary. Your own website = full control, zero commission, permanent Google visibility — an asset that pays for years.`},{q:`"Too many products"`,a:`Category-wise showcase of top 30–40 products with a bulk enquiry form is enough.`}],tips:[`Platform risk (policy changes) is a strong motivator`,`B2B buyers — salons, parlours — search Google`,`GST invoice download and bulk order features are key`]}
   }
-];
+};
 
-const filterCategories = [
-  { key: 'all', label: 'All' },
-  { key: 'salon', label: 'Salon / Beauty' },
-  { key: 'bakery', label: 'Bakery' },
-  { key: 'gym', label: 'Gym / Fitness' },
-  { key: 'tuition', label: 'Tuition / Coaching' },
-  { key: 'restaurant', label: 'Restaurant' },
-  { key: 'cafe', label: 'Café' },
-  { key: 'startup', label: 'Startup' },
-  { key: 'shop', label: 'Local Shop' },
-];
+let activeCat='all';
+const catOrder=['all','salon','bakery','gym','tuition','restaurant','cafe','startup','shop'];
 
-let activeFilter = 'all';
-
-function buildFilters() {
-  const container = document.getElementById('filters');
-  filterCategories.forEach(f => {
-    const count = f.key === 'all' ? leads.length : leads.filter(l => l.cat === f.key).length;
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (f.key === 'all' ? ' active' : '');
-    btn.dataset.key = f.key;
-    let inner = '';
-    if (f.key !== 'all' && catMeta[f.key]) {
-      inner = `<span class="dot" style="background:${catMeta[f.key].dot}"></span>`;
+function buildCats(){
+  const c=document.getElementById('cats');
+  catOrder.forEach(k=>{
+    const n=k==='all'?LEADS.length:LEADS.filter(l=>l.cat===k).length;
+    const btn=document.createElement('button');
+    btn.className='fpill'+(k==='all'?' on':'');
+    btn.dataset.k=k;
+    if(k==='all'){btn.textContent=`All (${n})`;}
+    else{
+      const m=CAT[k];
+      btn.innerHTML=`<span class="pip ${m.dot}"></span>${m.label} (${n})`;
     }
-    btn.innerHTML = inner + f.label + ` (${count})`;
-    btn.onclick = () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = f.key;
-      applyFilters();
+    btn.onclick=()=>{
+      document.querySelectorAll('.fpill').forEach(b=>b.classList.remove('on'));
+      btn.classList.add('on');
+      activeCat=k;render();
     };
-    container.appendChild(btn);
+    c.appendChild(btn);
   });
 }
 
-function applyFilters() {
-  const q = document.getElementById('search').value.toLowerCase().trim();
-  let data = activeFilter === 'all' ? leads : leads.filter(l => l.cat === activeFilter);
-  if (q) {
-    data = data.filter(l =>
-      l.name.toLowerCase().includes(q) ||
-      l.loc.toLowerCase().includes(q) ||
-      l.desc.toLowerCase().includes(q) ||
-      catMeta[l.cat].label.toLowerCase().includes(q)
-    );
-  }
-  renderCards(data);
-  document.getElementById('results-count').textContent = data.length + ' lead' + (data.length !== 1 ? 's' : '');
-  document.getElementById('stat-total').textContent = data.length;
-}
+function inj(t,n){return t.replace(/\[BIZ\]/g,n);}
 
-function formatPhone(p) {
-  if (!p) return null;
-  const digits = p.replace(/\D/g, '');
-  if (digits.length === 10) return '+91 ' + digits.slice(0,5) + ' ' + digits.slice(5);
-  return '+91 ' + digits;
-}
+function renderCard(lead,idx){
+  const m=CAT[lead.cat];
+  const cid=`c${idx}`;
+  const wsBadge=lead.ws==='none'
+    ?`<span class="tag ws-none">No Website</span>`
+    :`<span class="tag ws-poor">Poor / Outdated</span>`;
 
-function renderCards(data) {
-  const grid = document.getElementById('cards-grid');
-  if (!data.length) {
-    grid.innerHTML = '<div class="empty"><svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>No leads match your filters.</p></div>';
-    return;
-  }
-  grid.innerHTML = data.map((l, i) => {
-    const m = catMeta[l.cat];
-    const fmtPhone = formatPhone(l.phone);
-    const callBtn = fmtPhone
-      ? `<a class="btn-call" href="tel:${l.phone}">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
-          ${fmtPhone}
-        </a>`
-      : `<span class="btn-call na">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
-          Call (JD)
-        </span>`;
-
-    const waBtn = l.wa
-      ? `<a class="btn-wa" href="https://wa.me/91${l.wa}?text=Hi%2C%20I%20came%20across%20${encodeURIComponent(l.name)}%20and%20wanted%20to%20discuss%20building%20a%20professional%20website%20for%20your%20business." target="_blank">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>`
-      : '';
-
-    const wsBadge = l.ws === 'none'
-      ? '<span class="ws-badge ws-none">No Website</span>'
-      : '<span class="ws-badge ws-poor">Poor / Outdated</span>';
-
-    return `<div class="card">
-      <div class="card-top">
-        <div class="card-icon icon-${l.cat}">${m.icon}</div>
-        <div class="card-title-block">
-          <div class="card-name">${l.name}</div>
-          <div class="card-loc">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            ${l.loc}
-          </div>
-          <div class="card-badges">
-            <span class="badge cat-${l.cat}">${m.label}</span>
-            ${wsBadge}
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-desc">${l.desc}</div>
-        <div class="why-box">
-          <div class="why-label">Why they need a website</div>
-          ${l.why}
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="social-link">
-          <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          ${l.social}
-        </div>
-        <div class="action-btns">
-          ${waBtn}
-          ${callBtn}
-        </div>
-      </div>
-    </div>`;
+  const kpHTML=lead.kp.map(p=>{
+    const cls=p.t==='problem'?'kpi-problem':p.t==='miss'?'kpi-miss':'kpi-adv';
+    return `<div class="kpi ${cls}"><div class="kpi-ico">${p.i}</div><div class="kpi-txt">${p.x}</div></div>`;
   }).join('');
+
+  const hookHTML=`<div class="kp-hook"><div class="kp-hook-ico">🎯</div><div class="kp-hook-body"><div class="kp-hook-lbl">Hook Line — Open with this</div><div class="kp-hook-txt">${lead.hook}</div></div></div>`;
+
+  function scriptBlock(lang){
+    const s=SCRIPTS[lead.cat][lang];
+    const pid=`${cid}-${lang}`;
+    const objs=s.objections.map(o=>`
+      <div class="objq"><div class="objql">They say</div>${o.q}</div>
+      <div class="obja" style="margin-bottom:10px"><div class="objal">You reply</div>${o.a}</div>`).join('');
+    const tipsList=s.tips.map(t=>`<div class="tip">${t}</div>`).join('');
+    return `<div id="${pid}" class="lang-part" style="display:${lang==='tamil'?'block':'none'}">
+      <div class="sblock"><div class="slbl"><span class="snum">1</span>Opening</div><div class="stext"><div class="spk">You say →</div>${inj(s.open,lead.name)}</div></div>
+      <div class="sblock"><div class="slbl"><span class="snum">2</span>Pitch</div><div class="stext"><div class="spk">You say →</div>${inj(s.pitch,lead.name)}</div></div>
+      <div class="sblock"><div class="slbl"><span class="snum">3</span>Close</div><div class="stext"><div class="spk">You say →</div>${inj(s.close,lead.name)}</div></div>
+      <div class="sblock"><div class="slbl"><span class="snum">4</span>Objections</div>${objs}</div>
+      <div class="sblock"><div class="slbl"><span class="snum">5</span>Tips</div><div class="tipsbox"><div class="tipslbl">Caller Tips</div>${tipsList}</div></div>
+      <button class="copybtn" onclick="cpScript(${lead.id},'${lang}',this)">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy ${lang==='tamil'?'Tamil':'English'} Script
+      </button>
+    </div>`;
+  }
+
+  return `<div class="card" id="${cid}">
+    <div class="card-header" onclick="tog('${cid}')">
+      <div class="card-hl">
+        <div class="card-icon ${m.icn}">${m.icon}</div>
+        <div class="card-meta">
+          <div class="card-name">${lead.name}</div>
+          <div class="card-loc"><svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${lead.loc}</div>
+          <div class="card-tags">
+            <span class="tag ${m.chip}">${m.icon} ${m.label}</span>
+            ${wsBadge}
+            ${lead.rating?`<span class="tag star-tag">⭐ ${lead.rating}★</span>`:''}
+            ${lead.reviews?`<span class="tag rev-tag">${lead.reviews} reviews</span>`:''}
+            <span class="tag plat-tag">${lead.platform}</span>
+          </div>
+        </div>
+      </div>
+      <div class="chev"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="card-body">
+      <div class="tab-bar" id="tb-${cid}">
+        <button class="stab kptab on" onclick="swTab('${cid}','kp',this)">⚡ Key Points</button>
+        <button class="stab" onclick="swTab('${cid}','script',this)">📋 Full Script</button>
+      </div>
+      <div class="pane on" id="${cid}-kp">
+        <div class="kp-grid">${kpHTML}${hookHTML}</div>
+      </div>
+      <div class="pane" id="${cid}-script">
+        <div class="lang-toggle">
+          <button class="langbtn on" onclick="swLang('${cid}','tamil','english',this)">🇮🇳 Tamil</button>
+          <button class="langbtn" onclick="swLang('${cid}','english','tamil',this)">🇬🇧 English</button>
+        </div>
+        ${scriptBlock('tamil')}
+        ${scriptBlock('english')}
+      </div>
+    </div>
+  </div>`;
 }
 
-buildFilters();
-renderCards(leads);
+function render(){
+  const q=document.getElementById('srch').value.toLowerCase().trim();
+  let data=activeCat==='all'?LEADS:LEADS.filter(l=>l.cat===activeCat);
+  if(q)data=data.filter(l=>l.name.toLowerCase().includes(q)||l.loc.toLowerCase().includes(q)||CAT[l.cat].label.toLowerCase().includes(q));
+  document.getElementById('nb').textContent=data.length+' Lead'+(data.length!==1?'s':'');
+  document.getElementById('rc').textContent=data.length+' result'+(data.length!==1?'s':'');
+  document.getElementById('sn').textContent=data.length;
+  let lastCat=null,html='';
+  data.forEach((lead,i)=>{
+    if(lead.cat!==lastCat){
+      const m=CAT[lead.cat];
+      html+=`<div class="sec-head"><div class="sec-icon ${m.icn}">${m.icon}</div><span class="sec-label">${m.label}</span><div class="sec-line"></div><span class="sec-count">${(activeCat==='all'?data:data).filter(l=>l.cat===lead.cat).length} leads</span></div>`;
+      lastCat=lead.cat;
+    }
+    html+=renderCard(lead,lead.id);
+  });
+  if(!data.length)html=`<div class="empty"><div class="empty-ico">🔍</div><p>No leads match your search.</p></div>`;
+  document.getElementById('main').innerHTML=html;
+}
+
+function go(){render();}
+
+function tog(id){
+  const c=document.getElementById(id);
+  c.classList.toggle('open');
+}
+
+function swTab(cid,tab,btn){
+  document.querySelectorAll(`#${cid}-kp,#${cid}-script`).forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll(`#tb-${cid} .stab`).forEach(b=>b.classList.remove('on'));
+  document.getElementById(`${cid}-${tab}`).classList.add('on');
+  btn.classList.add('on');
+}
+
+function swLang(cid,show,hide,btn){
+  document.getElementById(`${cid}-script`).querySelectorAll('.lang-part').forEach(p=>p.style.display='none');
+  // find correct lang part
+  const allParts=document.getElementById(`${cid}-script`).querySelectorAll('.lang-part');
+  allParts.forEach(p=>{
+    if(p.id===`${cid}-${show}`)p.style.display='block';
+    else p.style.display='none';
+  });
+  btn.closest('.lang-toggle').querySelectorAll('.langbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+function cpScript(idx,lang,btn){
+  const lead=LEADS[idx];
+  const s=SCRIPTS[lead.cat][lang];
+  const kpTxt=lead.kp.map(p=>'• '+p.x.replace(/<[^>]+>/g,'')).join('\n');
+  const text=[
+    `CODERISE CALL SCRIPT: ${lead.name} (${lang.toUpperCase()})`,
+    `Category: ${CAT[lead.cat].label} | ${lead.loc}`,
+    `Platform: ${lead.platform}`,
+    `\n⚡ KEY POINTS\n${kpTxt}`,
+    `\n🎯 HOOK: ${lead.hook}`,
+    `\n── OPENING ──\n${inj(s.open,lead.name)}`,
+    `\n── PITCH ──\n${inj(s.pitch,lead.name)}`,
+    `\n── CLOSE ──\n${inj(s.close,lead.name)}`,
+    `\n── OBJECTIONS ──\n${s.objections.map(o=>`THEY: ${o.q}\nYOU: ${o.a}`).join('\n\n')}`,
+    `\n── TIPS ──\n${s.tips.join('\n')}`
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.innerHTML;
+    btn.classList.add('ok');
+    btn.innerHTML=`<svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+    setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=orig;},2500);
+  });
+}
+
+buildCats();
+render();
 </script>
 </body>
 </html>
